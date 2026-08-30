@@ -1,0 +1,24 @@
+seo_info:
+  title: Palestine Books For Libraries - A UK based Microcampaign for Education
+  seo_description: 
+  seo_siteowner: PalestineBooks4Libraries
+  seo_logo: ''
+nav:
+  - title: Home
+    link: /
+  - title: About
+    link: /about
+  - title: Books
+    link: /books
+  - title: Locations
+    link: /locations
+  - title: Contact
+    link: /contact
+contactLinks:
+  - title: BlueSky
+    link: 'https://bsky.app/profile/palestinebks4libs.bsky.social'
+    icon: brand-bluesky
+  - title: Mastodon
+    link: 'https://mastodon.social/@PalestineBooks4Libraries'
+    icon: brand-mastodon
+footerStarfield: true

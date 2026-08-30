@@ -1,0 +1,31 @@
+repository: 
+url: "http://127.0.0.1:4000/" # the base hostname & protocol for your site, e.g. http://example.acom
+#baseurl: "palestinebooks4libraries" # the subpath of your site, e.g. /blog
+header_title: "The UK Palestine Library Book Campaign" # the name of your site, e.g. ACME Corp.
+header_subtitle: "A Microcampaign"
+seo_description: "This is my meta seo_description"
+colour_scheme: ""
+font_scheme: ""
+one_page_site: "" # disables nav
+sass:
+  sass_dir: _sass
+  style: compressed        # optional
+  quiet_deps: true         # suppresses Pico.css dependency warnings
+collections:
+  pages:
+    output: true
+    permalink: /:name          
+    source: _pages 
+  posts:
+    output: true
+    permalink: /blog/:name          
+    source: _posts  
+  locations:
+    output: true
+    permalink: /locations/:title/  
+    source: _locations              
+defaults:
+  - scope:
+      path: "_pages"
+    values:
+      layout: default   

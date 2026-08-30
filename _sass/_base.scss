@@ -1,0 +1,691 @@
+/***
+ * ========================================
+ * 1. CONFIGURATION & VARIABLES
+ * ========================================
+ */
+
+// 1.2 Color Palette
+$red-500: #D93526;
+$green: #2C6C0C;
+$grey-850: #202632;
+$white: #fff;
+
+// 1.3 Semantic Color Variables
+$color-primary: $red-500;
+$color-secondary: $green;
+$color-dark: $grey-850;
+$color-light: $white;
+
+// 1.4 Component Colors
+$color-title: $color-light;
+$color-nav: $color-light;
+$color-footer: $color-light;
+$color-links: $color-dark;
+$color-button: $color-primary;
+
+// 1.5 Background Colors
+$bg-body: $color-secondary;
+$bg-title: $color-dark;
+$bg-nav: $color-secondary;
+$bg-footer: $color-dark;
+$bg-code-block: $color-dark;
+$bg-card: $color-light;
+$bg-tip: $color-secondary;
+
+// 1.6 Borders
+$border-thick: 3px;
+$border-primary: $color-primary;
+$border-secondary: $color-secondary;
+$border-radius-small: 4px;
+$border-radius-med: 8px;
+$border-radius-large: 16px;
+
+// 1.7 Typography
+@font-face {
+  font-family: 'Lora';
+  src: url("/assets/fonts/lora/static/Lora-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("/assets/fonts/source_sans_3/static/SourceSans3-Regular.ttf") format("truetype");
+}
+
+$font-headings: 'Lora', Georgia, 'Times New Roman', serif;
+$font-body: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+// 1.8 Spacing & Alignment
+$align-title: center;
+$align-nav: center;
+$align-footer: center;
+$gap-default: 1rem;
+$gap-large: 2rem;
+
+// 1.9 Layout
+$max-width-container: 1200px;
+$max-width-standard-page: 960px;
+
+/***
+ * ========================================
+ * 2. RESET & BASE STYLES
+ * ========================================
+ */
+
+body {
+  background: $bg-body;
+  color: $color-light;
+  font-family: $font-body;
+}
+
+/***
+ * ========================================
+ * 3. TYPOGRAPHY
+ * ========================================
+ */
+
+h1, h2, h3, h4, h5 {
+  font-family: $font-headings;
+  color: $color-light;
+}
+
+p, a, span, div, li, ul, ol, nav, header, footer {
+  font-family: $font-body;
+}
+
+main {
+	&, p, div, li {
+		color: $color-light;
+	}
+}
+
+/***
+ * ========================================
+ * 4. LINKS
+ * ========================================
+ */
+
+a {
+  color: $color-light;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 2px;
+  text-decoration-color: $color-dark;
+
+  &:hover {
+    color: $color-light;
+    background-color: $bg-footer;
+  }
+
+  .card & {
+    color: $color-primary;
+  }
+}
+
+/***
+ * ========================================
+ * 5. LAYOUT & CONTAINERS
+ * ========================================
+ */
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: $green;
+}
+
+// 5.1 Container Override
+@media (min-width: 1536px) {
+  .container {
+    max-width: $max-width-container;
+  }
+  .standard-page {
+  	max-width: $max-width-standard-page;
+  	margin: auto;
+  }
+}
+
+// 5.2 Main Container
+main.container {
+  flex:1;
+}
+
+.primary-and-sidebar {
+	display: flex;
+
+	& .primary {
+		flex: 6;
+		padding: $gap-default/2;
+		padding-right: $gap-large;
+	}
+
+	& .sidebar {
+		flex: 4;
+		padding: $gap-default/2;
+		padding-left: $gap-large;
+	}
+}
+
+/***
+ * ========================================
+ * 6. HEADER
+ * ========================================
+ */
+
+body > header {
+  background-color: $bg-nav;
+  padding-bottom: 0;
+}
+
+.title-container {
+  text-align: $align-title;
+  color: $color-title;
+}
+
+.site-title span {
+  @extend h3;
+  font-weight: bold;
+}
+
+.site-title-break {
+  padding: 1em;
+}
+
+h1 {
+	text-align: center;
+}
+
+/***
+ * ========================================
+ * 7. NAVIGATION
+ * ========================================
+ */
+
+.primary-nav-outer-container {
+  margin-top: $gap-default;
+  background: $bg-footer;
+  border-top: $border-thick solid $border-primary;
+  border-bottom: $border-thick solid $border-primary;
+}
+
+nav {
+
+  &.primary {
+    width: 100%;
+  }
+
+  &.primary ul {
+    display: flex;
+    align-items: center;
+    justify-content: $align-nav;
+    gap: $gap-default;
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  &.primary a {
+    display: inline-block;
+    padding: 0.5em 2em;
+    color: $color-light;
+    background-color: $color-primary;
+    text-decoration: none;
+  }
+}
+
+/***
+ * ========================================
+ * 8. BUTTONS & FORM ELEMENTS
+ * ========================================
+ */
+
+button,
+[type="submit"],
+[type="reset"],
+[type="button"],
+[type="file"]::file-selector-button,
+[role="button"] {
+  background-color: $color-button;
+  border: none;
+  cursor: pointer;
+}
+
+/***
+ * ========================================
+ * 9. CARDS
+ * ========================================
+ */
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap-large;
+  justify-content: space-between;
+  margin-top: $gap-default;
+}
+
+.card {
+  background: $bg-card;
+  border-radius: $border-radius-large;
+  padding: $gap-default;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-top: $border-thick solid $border-primary;
+  color: $color-dark;
+
+  h3 {
+    color: $color-secondary;
+    margin-bottom: $gap-default;
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin-bottom: $gap-default;
+    color: $color-dark;
+  }
+}
+
+/***
+ * ========================================
+ * 10. REQUEST TEMPLATE
+ * ========================================
+ */
+
+.request-template {
+  color: $color-dark;
+  max-width: 800px;
+  margin: $gap-large auto;
+  padding: $gap-default;
+  background: $bg-card;
+  border-radius: $border-radius-med;
+  border-left: 4px solid $border-primary;
+
+  h3 {
+    color: $color-dark;
+    margin-bottom: $gap-default;
+  }
+
+  p {
+    color: $color-dark;
+    line-height: 1.7;
+    margin-bottom: $gap-default;
+  }
+}
+
+// 10.1 Code Block
+.code-block {
+  position: relative;
+  background: $bg-code-block;
+  border-radius: $border-radius-med;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow: hidden;
+
+  pre {
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  code {
+    display: block;
+    color: $color-dark;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+}
+
+// 10.2 Copy Button
+.copy-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  background: $color-button;
+  color: $color-light;
+  border: none;
+  border-radius: $border-radius-small;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s ease;
+  z-index: 10;
+
+  &:hover {
+    background: darken($color-button, 10%);
+  }
+
+  &.copied {
+    background: $color-secondary;
+  }
+}
+
+// 10.3 Tip
+.tip {
+  background: $bg-tip;
+  padding: 0.75rem $gap-default;
+  border-radius: $border-radius-small;
+  margin-top: $gap-default;
+  color: $color-light;
+}
+
+/***
+ * ========================================
+ * 11. LOCATIONS PAGE
+ * ========================================
+ */
+
+.locations-page ul {
+	columns: 4;
+}
+
+/***
+ * ========================================
+ * 12. FOOTER
+ * ========================================
+ */
+
+footer {
+  display: flex;
+  justify-content: $align-footer;
+  gap: $gap-default;
+  margin-top: $gap-default;
+  border-top: 3px solid $border-primary;
+  background: $bg-footer;
+
+  a {
+    color: $color-footer;
+  }
+}
+
+/***
+ * ========================================
+ * 13. SOCIAL ICONS
+ * ========================================
+ */
+
+nav.socials {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: $gap-default;
+}
+
+.socials {
+  .icon,
+  .link {
+    display: inline-block;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.icon-email {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22white%22%20%3E%3Cpath%20d%3D%22M22%207.535v9.465a3%203%200%200%201%20-2.824%202.995l-.176%20.005h-14a3%203%200%200%201%20-2.995%20-2.824l-.005%20-.176v-9.465l9.445%206.297l.116%20.066a1%201%200%200%200%20.878%200l.116%20-.066l9.445%20-6.297z%22%20%2F%3E%3Cpath%20d%3D%22M19%204c1.08%200%202.027%20.57%202.555%201.427l-9.555%206.37l-9.555%20-6.37a2.999%202.999%200%200%201%202.354%20-1.42l.201%20-.007h14z%22%20%2F%3E%3C%2Fsvg%3E");
+}
+
+.brand-mastodon {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-width%3D%221%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M18.648%2015.254c-1.816%201.763%20-6.648%201.626%20-6.648%201.626a18.262%2018.262%200%200%201%20-3.288%20-.256c1.127%201.985%204.12%202.81%208.982%202.475c-1.945%202.013%20-13.598%205.257%20-13.668%20-7.636l-.026%20-1.154c0%20-3.036%200.023%20-4.115%201.352%20-5.633c1.671%20-1.91%206.648%20-1.666%206.648%20-1.666s4.977%20-.243%206.648%201.667c1.329%201.518%201.352%202.597%201.352%205.633s-0.456%204.074%20-1.352%204.944z%22%20%2F%3E%3Cpath%20d%3D%22M12%2011.204v-2.926c0%20-1.258%20-0.895%20-2.278%20-2%20-2.278s-2%201.02%20-2%202.278v4.722m4%20-4.722c0%20-1.258%200.895%20-2.278%202%20-2.278s2%201.02%202%202.278v4.722%22%20%2F%3E%3C%2Fsvg%3E");
+}
+
+.brand-bluesky {
+  background-image: url('data:image/svg+xml,<svg width="32" height="32" viewBox="0 0 568 501" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M123.121 33.6637C188.241 82.5526 258.281 181.681 284 234.873C309.719 181.681 379.759 82.5526 444.879 33.6637C491.866 -1.61183 568 -28.9064 568 57.9464C568 75.2916 558.055 203.659 552.222 224.501C531.947 296.954 458.067 315.434 392.347 304.249C507.222 323.8 536.444 388.56 473.333 453.32C353.473 576.312 301.061 422.461 287.631 383.039C285.169 375.812 284.017 372.431 284 375.306C283.983 372.431 282.831 375.812 280.369 383.039C266.939 422.461 214.527 576.312 94.6667 453.32C31.5556 388.56 60.7778 323.8 175.653 304.249C109.933 315.434 36.0535 296.954 15.7778 224.501C9.94525 203.659 0 75.2916 0 57.9464C0 -28.9064 76.1345 -1.61183 123.121 33.6637Z" fill="%23FFFFFF"/></svg>');
+}
+
+.copyright {
+  width: 100%;
+  text-align: center;
+  color: $color-light;
+}
+
+/***
+ * ========================================
+ * 14. RESPONSIVE
+ * ========================================
+ */
+
+@media (max-width: 600px) {
+  .request-template {
+    padding: 1rem;
+  }
+
+  .code-block {
+    padding: 1rem;
+    padding-top: 3rem;
+  }
+
+  .code-block code {
+    font-size: 0.85rem;
+  }
+
+  .copy-btn {
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+/** Variables **/
+
+:root {
+  --color-background: #cbd5e1;
+  --color-background-alt: #64748b;
+  --color-border-active: #64748b;
+  --color-border-default: #94a3b8;
+  --color-highlight: #cbd5e1;
+  --color-primary: #1e293b;
+  --color-primary-active: #090f1d;
+  --color-text-default: #0f172a;
+  --color-text-muted: #475569;
+
+  --font-family-body: "Inter", sans-serif;
+}
+
+/***
+ * ========================================
+ * 14. FORMSPREE
+ * ========================================
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+[type="checkbox"],
+[type="radio"],
+[type="range"] {
+  appearance: none;
+  flex-shrink: 0;
+  padding: 0;
+  user-select: none;
+}
+
+[type="checkbox"]:focus,
+[type="radio"]:focus,
+[type="range"]:focus {
+  outline: none;
+}
+
+/** Components **/
+
+.fs-form {
+  display: grid;
+  row-gap: 1.5rem;
+}
+
+.fs-form:where(.fs-layout__2-column) {
+  column-gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+fieldset {
+  display: grid;
+  margin: 1.5rem 0;
+  row-gap: 1.5rem;
+}
+
+.fs-form:where(.fs-layout__2-column) fieldset {
+  column-gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-column: 1 / -1;
+}
+
+.fs-fieldset-title {
+  color: var(--color-text-default);
+  font-family: var(--font-family-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.75rem;
+  margin-bottom: 1.5rem;
+  grid-column: 1 / -1;
+}
+
+.fs-field {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.375rem;
+}
+
+.fs-label {
+  color: $color-light;
+  display: block;
+  font-family: var(--font-family-display);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.25rem;
+}
+
+.fs-description {
+  color: var(--color-text-muted);
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.fs-button-group {
+  display: flex;
+  flex-direction: row-reverse;
+  column-gap: 1.5rem;
+}
+
+.fs-form:where(.fs-layout__2-column) .fs-button-group {
+  grid-column: 1 / -1;
+}
+
+.fs-button {
+  background-color: $color-primary;
+  border-radius: 0.375rem;
+  color: white;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1rem;
+  padding: 1rem 2rem;
+  transition-duration: 200ms;
+  transition-property: background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fs-button:hover {
+  background-color: var(--color-primary-active);
+}
+
+.fs-button:focus-visible {
+  background-color: var(--color-primary-active);
+  outline: 3px solid var(--color-highlight);
+}
+
+.fs-input,
+.fs-select {
+  appearance: none;
+  border-radius: 0.375rem;
+  border-width: 0;
+  box-shadow: var(--color-border-default) 0 0 0 1px inset;
+  color: var(--color-text-default);
+  font-size: 1rem;
+  height: 2.5rem;
+  line-height: 1.5rem;
+  outline: none;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.fs-input:focus-visible,
+.fs-select:focus-visible {
+  box-shadow: var(--color-border-active) 0 0 0 1.5px inset;
+  outline: 3px solid var(--color-highlight);
+  outline-offset: 0;
+}
+
+.fs-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.fs-textarea {
+  appearance: none;
+  border-radius: 0.375rem;
+  border-width: 0;
+  box-shadow: var(--color-border-default) 0 0 0 1px inset;
+  color: var(--color-primary);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  outline: none;
+  padding: 0.5rem 0.75rem;
+  resize: vertical;
+}
+
+.fs-textarea:focus-visible {
+  box-shadow: var(--color-border-active) 0 0 0 1.5px inset;
+  outline: 3px solid var(--color-highlight);
+  outline-offset: 0;
+}
+
+.fs-textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+/** Utilities **/
+
+.col-span-full {
+  grid-column: 1 / -1;
+}
+
+.fs-textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.slider-label-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.slider-label-text {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  white-space: nowrap;
+}

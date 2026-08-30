@@ -1,0 +1,198 @@
+/***
+* TODO: IMPORT PICO FOR CUSTOMISATION
+*/
+
+/***
+* Remove larger breakpoints
+*/
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+$title-align: center;
+
+// Red
+$red-500: #D93526;
+$red: $red-500;
+$green: #2C6C0C;
+$grey-850: #202632;
+$grey: $grey-850;
+$white: #fff;
+
+$title-align: center;
+$title-color: $white;
+$title-background: $grey;
+
+$nav-align: center;
+$nav-color: $white;
+$nav-background: $green;
+
+$footer-align: center;
+$footer-color: #fff;
+$footer-background: $grey;
+
+$links-colour: $grey;
+$button-colour: $red;
+
+/// Colours
+$backgroundColor: $green;
+$bodyColor: $white;
+$bodyFont: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+
+/* Option 1: Narrow the main container */
+.container,
+main.container {
+    //max-width: $max-width;   /* or any width you prefer, e.g., 720px, 640px */
+}
+
+body {
+  background: $backgroundColor;
+  color: $bodyColor;
+  font-family: $bodyFont;
+ }
+
+body>header {
+	background-color: $green;
+	padding-bottom:0;
+}
+ .title-container {
+	text-align: $title-align;
+	color: $title-color;
+}
+.primary-nav-outer-container {
+	margin-top: 1rem;
+	background: $grey;
+	border-top: 3px solid $red;
+	border-bottom: 3px solid $red;
+}
+nav {
+	justify-content: unset;
+	
+		a {
+		background-color: $red;
+	}
+}
+nav.primary {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+}
+nav.primary ul {
+	list-style: none;
+	margin: auto;
+	display: block;
+}
+nav.primary a {
+	display: inline-block;
+	color: #fff;
+}
+
+.site-title span {
+	@extend h3;
+	font-weight: bold;
+
+}
+.site-title-break {
+	padding:1em;
+}
+h1, h2, h3, h4, h5, p, div, li {
+	color: $white;
+}
+a {
+	color: $white;
+	text-decoration: underline;
+	text-decoration-style: solid;
+	text-decoration-thickness: 2px;
+	text-decoration-color: $red;	
+	&:hover {
+		background-color: $grey;
+	}
+}
+button, [type=submit], [type=reset], [type=button], [type=file]::file-selector-button, [role=button] {
+	background-color: $button-colour;
+}
+
+
+/* 
+ * CARD STYLES
+ */
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.card {
+  flex: 1;
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-top: 5px solid $red;
+  color: $grey;
+}
+.card h3 {
+  color: $green;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+.card p {
+  margin-bottom: 1rem;
+   color: $grey;
+}
+
+
+/****
+** FOOTER
+****/
+footer {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 1rem;
+}
+footer {
+	border-top: 3px solid $red;
+	background: $footer-background;
+}
+footer a {
+	color: $footer-color;
+}
+
+/** Footer nav **/
+nav.socials {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+}
+
+/** Socials **/
+.socials .icon, .socials .link {
+	display: inline-block;
+}
+.socials .icon {
+	width:32px;
+	height:32px;
+}
+.icon-email {	
+	/* TODO enable icon colors to be changed via css
+	color: white;
+	fill: white;
+	stroke: white;
+	*/
+	background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22white%22%20%3E%3Cpath%20d%3D%22M22%207.535v9.465a3%203%200%200%201%20-2.824%202.995l-.176%20.005h-14a3%203%200%200%201%20-2.995%20-2.824l-.005%20-.176v-9.465l9.445%206.297l.116%20.066a1%201%200%200%200%20.878%200l.116%20-.066l9.445%20-6.297z%22%20%2F%3E%3Cpath%20d%3D%22M19%204c1.08%200%202.027%20.57%202.555%201.427l-9.555%206.37l-9.555%20-6.37a2.999%202.999%200%200%201%202.354%20-1.42l.201%20-.007h14z%22%20%2F%3E%3C%2Fsvg%3E");
+}
+.brand-mastodon {
+	background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-width%3D%221%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%3Cpath%20d%3D%22M18.648%2015.254c-1.816%201.763%20-6.648%201.626%20-6.648%201.626a18.262%2018.262%200%200%201%20-3.288%20-.256c1.127%201.985%204.12%202.81%208.982%202.475c-1.945%202.013%20-13.598%205.257%20-13.668%20-7.636l-.026%20-1.154c0%20-3.036%20.023%20-4.115%201.352%20-5.633c1.671%20-1.91%206.648%20-1.666%206.648%20-1.666s4.977%20-.243%206.648%201.667c1.329%201.518%201.352%202.597%201.352%205.633s-.456%204.074%20-1.352%204.944z%22%20%2F%3E%3Cpath%20d%3D%22M12%2011.204v-2.926c0%20-1.258%20-.895%20-2.278%20-2%20-2.278s-2%201.02%20-2%202.278v4.722m4%20-4.722c0%20-1.258%20.895%20-2.278%202%20-2.278s2%201.02%202%202.278v4.722%22%20%2F%3E%3C%2Fsvg%3E");
+}
+.brand-bluesky {
+
+	background-image: url('data:image/svg+xml,<svg width="32" height="32" viewBox="0 0 568 501" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M123.121 33.6637C188.241 82.5526 258.281 181.681 284 234.873C309.719 181.681 379.759 82.5526 444.879 33.6637C491.866 -1.61183 568 -28.9064 568 57.9464C568 75.2916 558.055 203.659 552.222 224.501C531.947 296.954 458.067 315.434 392.347 304.249C507.222 323.8 536.444 388.56 473.333 453.32C353.473 576.312 301.061 422.461 287.631 383.039C285.169 375.812 284.017 372.431 284 375.306C283.983 372.431 282.831 375.812 280.369 383.039C266.939 422.461 214.527 576.312 94.6667 453.32C31.5556 388.56 60.7778 323.8 175.653 304.249C109.933 315.434 36.0535 296.954 15.7778 224.501C9.94525 203.659 0 75.2916 0 57.9464C0 -28.9064 76.1345 -1.61183 123.121 33.6637Z" fill="%23FFFFFF"/></svg>');
+}
+
+

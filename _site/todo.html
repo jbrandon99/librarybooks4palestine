@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-US" data-theme="light">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="description" content="This is my meta seo_description">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <title>Palestine Books For Libraries - A UK based Microcampaign for Education - </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <!-- Apple Touch Icons -->
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+	<link rel="apple-touch-icon" sizes="167x167" href="/apple-touch-icon-167x167.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+	<!-- Safari Pinned Tab -->
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#007AFF">
+  </head>
+  <body>
+  	<header>
+  		<div class="title-outer-container">
+	  		<div class="container title-container">
+		  		<span class="site-title">
+		  			<span><h2>&#127477;&#127480; The UK Palestine Library Book Campaign &#127477;&#127480;<h2></span>
+		  		</span>
+		  	</div>
+		</div>	
+	  	<div class="primary-nav-outer-container">
+		  	<div class="container primary-nav-container">
+				<nav class="primary">
+			  		<ul>
+					  
+					    <li><a href="/">Home</a></li>
+					  
+					    <li><a href="/about">About</a></li>
+					  
+					    <li><a href="/books">Books</a></li>
+					  
+					    <li><a href="/locations">Locations</a></li>
+					  
+					    <li><a href="/contact">Contact</a></li>
+					  
+					</ul>
+				</nav>
+			</div>
+		</div>
+  	</header>
+
+  	<main class="container">
+  		<head>
+  			<h1></h1>
+  		</head>
+  		<content class="wysiwyg-content">
+  			<p>markdown</p>
+<h1 id="css-file-todo-list">CSS File TODO List</h1>
+
+<h2 id="-high-priority">🔴 HIGH PRIORITY</h2>
+
+<h3 id="1-define-missing-variable">1. Define Missing Variable</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Define $max-width variable (currently referenced in commented code but never declared)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Location: container section - //max-width: $max-width;</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Suggested value: $max-width: 1200px;</li>
+</ul>
+
+<h3 id="2-remove-duplicate-code">2. Remove Duplicate Code</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Remove duplicate $title-align declaration (appears twice - lines 20 and 28)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Keep only one instance in the variables section</li>
+</ul>
+
+<h3 id="3-fix-undefined-variable-reference">3. Fix Undefined Variable Reference</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Fix or remove commented $max-width reference in container rule</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Uncomment container width rule after defining variable</li>
+</ul>
+
+<h3 id="4-pico-integration">4. PICO Integration</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Import PICO for customisation (TODO comment at top of file)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Add: @import “pico”;</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Ensure PICO doesn’t conflict with existing styles</li>
+</ul>
+
+<h2 id="-medium-priority">🟡 MEDIUM PRIORITY</h2>
+
+<h3 id="5-icon-color-management">5. Icon Color Management</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Implement dynamic icon coloring (currently uses hardcoded white fill in SVGs)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Options:
+    <ul>
+      <li>Use CSS filter property</li>
+      <li>Use SVG currentColor approach</li>
+      <li>Use mask-image technique</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Uncomment and implement TODO in icon-email section</li>
+</ul>
+
+<h3 id="6-container-width-customization">6. Container Width Customization</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Uncomment and test container width rule:
+.container,
+main.container {
+//max-width: $max-width;
+}</li>
+</ul>
+
+<p>text</p>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Test across different viewport sizes after uncommenting</li>
+</ul>
+
+<h3 id="7-code-organization">7. Code Organization</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Refactor into partials:</li>
+  <li class="task-list-item">_variables.scss</li>
+  <li class="task-list-item">_base.scss</li>
+  <li class="task-list-item">_layout.scss</li>
+  <li class="task-list-item">_navigation.scss</li>
+  <li class="task-list-item">_components.scss</li>
+  <li class="task-list-item">_footer.scss</li>
+</ul>
+
+<h3 id="8-review-selector-specificity">8. Review Selector Specificity</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Check if body &gt; header could be simplified to just header</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Consider if nav.primary could be simplified</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Review nested selectors for over-specificity</li>
+</ul>
+
+<h2 id="-low-priority">🟢 LOW PRIORITY</h2>
+
+<h3 id="9-css-architecture">9. CSS Architecture</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Adopt BEM naming convention for better maintainability</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Current classes needing review:</li>
+  <li class="task-list-item">.title-container → .title__container</li>
+  <li class="task-list-item">.primary-nav-outer-container → .nav–primary</li>
+  <li class="task-list-item">.site-title-break → .site-title__break</li>
+</ul>
+
+<h3 id="10-performance-optimizations">10. Performance Optimizations</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Combine duplicate nav selectors into single rule</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Review CSS cascade for potential overrides</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Remove unused commented code</li>
+</ul>
+
+<h3 id="11-accessibility">11. Accessibility</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Check color contrast ratios (white text on green)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Test if a:hover background change affects readability</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Add :focus states for interactive elements</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Test with screen readers</li>
+</ul>
+
+<h3 id="12-browser-compatibility">12. Browser Compatibility</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Test gap property in flex layouts for older browsers</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Add vendor prefixes for:</li>
+  <li class="task-list-item">border-radius</li>
+  <li class="task-list-item">box-shadow</li>
+  <li class="task-list-item">flex properties</li>
+</ul>
+
+<h3 id="13-social-icons">13. Social Icons</h3>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Add hover effects to .socials .icon</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Make social icons responsive on mobile</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Ensure social icons follow design system</li>
+</ul>
+
+<h2 id="-quick-wins">📋 QUICK WINS</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Validate all color variables are used consistently</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Remove commented-out code once finalized</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Ensure footer links match design system</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Test all interactive elements (buttons, links, form elements)</li>
+</ul>
+
+<h2 id="-testing-checklist">🔍 TESTING CHECKLIST</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Test 1536px breakpoint container override</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Verify navigation alignment (currently center)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Check card styles on mobile (flex-wrap behavior)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Test button styles across all button types:</li>
+  <li class="task-list-item">button</li>
+  <li class="task-list-item">[type=submit]</li>
+  <li class="task-list-item">[type=reset]</li>
+  <li class="task-list-item">[type=button]</li>
+  <li></li>
+  <li class="task-list-item">[role=button]</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Verify social media icons display correctly</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Confirm footer styling matches design</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Test all responsive breakpoints</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Verify typography across all heading levels</li>
+</ul>
+
+<h2 id="-improvement-suggestions">💡 IMPROVEMENT SUGGESTIONS</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Consider using CSS Custom Properties instead of SCSS variables for runtime theming</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create a color system with semantic names:</li>
+  <li class="task-list-item">$color-primary</li>
+  <li class="task-list-item">$color-accent</li>
+  <li class="task-list-item">$color-background</li>
+  <li class="task-list-item">$color-text</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Add responsive typography using clamp() or viewport units</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Implement dark mode support using CSS variables</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Consider extracting inline SVGs to separate files for better caching</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Add CSS minification for production builds</li>
+</ul>
+
+<h2 id="-notes">📝 NOTES</h2>
+
+<ul>
+  <li>The PICO import comment at the top indicates planned integration</li>
+  <li>Color variables use both UK and US spelling (colour/color) - consider standardizing</li>
+  <li>Some rules use !important (none found) - avoid if possible</li>
+  <li>Consider using CSS Grid for layout instead of flex where appropriate</li>
+</ul>
+
+
+  		</content>
+	</main>
+  </body>
+  <footer>
+  	<div class="footer-container container">
+	  	<nav class="socials">
+	  		<ul>
+			  
+			    <li><a href="https://bsky.app/profile/palestinebks4libs.bsky.social"><span class="icon brand-bluesky"></span></a></li>
+			  
+			    <li><a href="https://mastodon.social/@PalestineBooks4Libraries"><span class="icon brand-mastodon"></span></a></li>
+			  
+			</ul>
+		</nav>
+		<div class="copyright"<p>Copyright Palestine Books for Libraries 2026</p></div>
+	</div>
+  </footer>
+</html>
