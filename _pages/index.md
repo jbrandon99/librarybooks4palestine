@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: landing
 title: Palestine Books in Libraries - A UK Micro-Campaign
 ---
 <div class="primary-and-sidebar">

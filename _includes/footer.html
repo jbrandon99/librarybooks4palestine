@@ -1,0 +1,12 @@
+ <footer>
+  	<div class="footer-container container">
+	  	<nav class="socials">
+	  		<ul>
+			  {% for item in site.data.config.contactLinks %}
+			    <li><a href="{{ item.link }}"><span class="icon {{ item.icon }}"></span></a></li>
+			  {% endfor %}
+			</ul>
+		</nav>
+		<div class="copyright"<p>Copyright Palestine Books for Libraries {{ "now" | date: "%Y" }}</p></div>
+	</div>
+</footer>	

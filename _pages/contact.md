@@ -3,25 +3,37 @@ layout: default
 title: Contact
 ---
 
+<form action="https://formspree.io/f/xbgjdrnq" method="POST">
+  <label for="email">
+    Email
+    <input 
+      type="email" 
+      id="email" 
+      name="email" 
+      placeholder="your@email.com" 
+      required 
+      autocomplete="email"
+    />
+    <small>Enter a valid email address</small>
+  </label>
 
-     
-<form
-  action="https://formspree.io/f/xbgjdrnq"
-  class="fs-form"
-  target="_top"
-  method="POST"
->
-  <div class="fs-field">
-    <label class="fs-label" for="email">Email</label>
-    <input class="fs-input" id="email" name="email" required />
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="name">Name</label>
-    <input class="fs-input" id="name" name="name" required />
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="message">Message</label>
-    <textarea class="fs-textarea" id="message" name="message" rows="8"></textarea>
-  </div>
-   <button type="submit">Send</button>
+  <label for="name">
+    Name
+    <input 
+      type="text" 
+      id="name" 
+      name="name" 
+      placeholder="Your Name" 
+      required 
+      minlength="2"
+    />
+    <small>Minimum 2 characters</small>
+  </label>
+
+  <label for="message">
+    Message
+    <textarea id="message" name="message" rows="4" placeholder="Your message..." required minlength="2"></textarea>
+  </label>
+
+  <button type="submit">Send</button>
 </form>

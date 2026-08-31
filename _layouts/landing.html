@@ -1,43 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}" data-theme="light">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <meta name="description" content="{{ site.seo_description }}">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <title>{{ site.data.config.seo_info.title }} - {{ page.title }}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
-    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
-    <!-- Apple Touch Icons -->
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-	<link rel="apple-touch-icon" sizes="167x167" href="/apple-touch-icon-167x167.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-	<!-- Safari Pinned Tab -->
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#007AFF">
-  </head>
-  <body>
-  	<header>
-  		<div class="title-outer-container">
-	  		<div class="container title-container">
-		  		<span class="site-title">
-		  			<span><h2>&#127477;&#127480; {{ site.header_title }} &#127477;&#127480;<h2></span>
-		  		</span>
-		  	</div>
-		</div>	
-	  	<div class="primary-nav-outer-container">
-		  	<div class="container primary-nav-container">
-				<nav class="primary">
-			  		<ul>
-					  {% for item in site.data.config.nav %}
-					    <li><a href="{{ item.link }}">{{ item.title }}</a></li>
-					  {% endfor %}
-					</ul>
-				</nav>
-			</div>
-		</div>
-  	</header>
+{% include header.html %}
+  <body class="landing-page">
+  {% include page-title.html %}
 
   	<main class="container">
   		<head>
@@ -48,15 +11,5 @@
   		</content>
 	</main>
   </body>
-  <footer>
-  	<div class="footer-container container">
-	  	<nav class="socials">
-	  		<ul>
-			  {% for item in site.data.config.contactLinks %}
-			    <li><a href="{{ item.link }}"><span class="icon {{ item.icon }}"></span></a></li>
-			  {% endfor %}
-			</ul>
-		</nav>
-	</div>
-  </footer>
+  {% include footer.html %}
 </html>
