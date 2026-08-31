@@ -5,7 +5,8 @@ markdown
 
 - [ ] REMOVE TINA CMS STUFF FROM NODE MODULES
 - [x] Remove node_modules
-- [ ] tes contact form
+- [x] contact form
+- [ ] delete unused fonts
 
 ### 1. Define Missing Variable
 - [ ] Define $max-width variable (currently referenced in commented code but never declared)
