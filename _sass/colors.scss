@@ -1,6 +1,7 @@
 /* Dark Green Theme */
-[data-theme="dark"],
-:root:not([data-theme="light"]) {
+[data-theme="Green"],
+:root:not([data-theme="dark"]):not([data-theme="light"]),
+:host(:not([data-theme="dark"]):not([data-theme="light"])) {
   color-scheme: dark;
   
   /* Background & Base */
@@ -123,11 +124,11 @@
   --pico-accordion-open-summary-color: rgba(255, 255, 255, 0.7);
   
   /* Card */
-  --pico-card-background-color: rgba(0, 0, 0, 0.2);
+  --pico-card-background-color: rgba(255, 255, 255, 0.9);
   --pico-card-text-color: var(--pico-secondary);
-  --pico-card-border-color: rgba(217, 53, 38, 0.5);
+  --pico-card-border-color: rgba(217, 53, 38, 1);
   --pico-card-box-shadow: rgba(217, 53, 38, 0.5);
-  --pico-card-sectioning-background-color: rgba(0, 0, 0, 0.15);
+  --pico-card-sectioning-background-color: rgba(255, 255, 255, 0.5);
   
   /* Dropdown */
   --pico-dropdown-background-color: #202632;
@@ -179,8 +180,8 @@
 
 /* Light Theme */
 [data-theme="light"],
-:root:not([data-theme="dark"]):not([data-theme="dark-green"]),
-:host(:not([data-theme="dark"]):not([data-theme="dark-green"])) {
+:root:not([data-theme="dark"]):not([data-theme="green"]),
+:host(:not([data-theme="dark"]):not([data-theme="green"])) {
   color-scheme: light;
   
   /* Background & Base */
