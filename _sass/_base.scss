@@ -4,6 +4,25 @@
  * ========================================
  */
 
+// 1.1 Load files
+
+@import "colors";
+
+@font-face {
+  font-family: 'Lora';
+  src: url("/assets/fonts/lora/static/Lora-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url("/assets/fonts/source_sans_3/static/SourceSans3-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url("/assets/fonts/inter/static/Inter_18pt-Regular.ttf") format("truetype");
+}
+
 // 1.2 Color Palette
 $red: #D93526;
 $green: #2C6C0C;
@@ -34,49 +53,28 @@ $bg-card: $color-light;
 $bg-tip: $color-background;
 
 // 1.6 Borders
-$border-thick: 3px;
+//$border-thick: 3px;
 $border-primary: $color-primary;
 $border-secondary: $color-secondary;
-$border-radius-small: 4px;
-$border-radius-med: 8px;
-$border-radius-large: 16px;
-
-// 1.7 Typography
-@font-face {
-  font-family: 'Lora';
-  src: url("/assets/fonts/lora/static/Lora-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  src: url("/assets/fonts/source_sans_3/static/SourceSans3-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url("/assets/fonts/inter/static/Inter_18pt-Regular.ttf") format("truetype");
-}
-
-$font-headings: 'Lora', Georgia, 'Times New Roman', serif;
-$font-body: 'Source Sans Pro', Roboto, Helvetica, Arial, sans-serif;
-$font-forms: 'Inter', sans-serif;
-$font-size-default: 16px;
-$font-size-large: 1.5rem;
-$font-size-medium-large: 1.25rem;
-$font-size-small: 0.75rem;
-$font-size-code-block: 0.95rem;
-
-// 1.8 Spacing & Alignment
 :root {
---spacing-sm: 0.75rem;
---spacing: 1rem;
---spacing-lg: 2rem;
+  --pico-border-radius:0.5rem;
+  --pico-border-width: 3px;
+
+  // 1.7 Typography
+  --pico-font-family-sans-serif: system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Helvetica, Arial, "Helvetica Neue", sans-serif;
+  --pico-font-family-serif: 'Lora', Georgia, 'Times New Roman', serif;
+  --pico-font-family-sans-serif-alt: 'Inter', sans-serif;
+  --pico-font-size: 16px; // browser default may differ
+  --pico-font-size-lg: calc(var(--pico-font-size)*1.5);
+  --pico-font-size-sm: calc(var(--pico-font-size)*0.75);
+  --pico-font-size-code: calc(var(--pico-font-size)*0.95);
+
+  // 1.8 Spacing & Alignment
+  --spacing-sm: 0.75rem;
+  --pico-spacing: 1rem;
+  --spacing-lg: 2rem;
+  --pico-line-height: 1.7;
 }
-$align-title: center;
-$align-nav: center;
-$align-footer: center;
-$line-height-standard: 1.7;
-$line-height-small: 1.2;
 
 // 1.9 Layout
 $max-width-landing-page: 960px;
@@ -91,7 +89,7 @@ $max-width-standard-page: 800px;
 body {
   background: $bg-body;
   color: $color-light;
-  font-family: $font-body;
+  font-family: var(--pico-font-family-sans-serif);
 }
 
 /***
@@ -105,12 +103,12 @@ html {
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: $font-headings;
+  font-family: var(--pico-font-family-serif);
   color: $color-light;
 }
 
 p, a, span, div, li, ul, ol, nav, header, footer {
-  font-family: $font-body;
+  font-family: var(--pico-font-family-sans-serif);
 }
 
 main {
@@ -175,14 +173,14 @@ main.container {
 
 	& .primary {
 		flex: 3;
-		padding: var(--spacing);
-		padding-right: var(--spacing-lg);
+		padding: var(--pico-spacing);
+		padding-right: calc(var(--pico-spacing)*2);
 	}
 
 	& .sidebar {
 		flex: 2;
-		padding: var(--spacing);
-		padding-left: var(--spacing-lg);
+		padding: var(--pico-spacing);
+		padding-left: calc(var(--pico-spacing)*2);
 	}
 }
 
@@ -198,7 +196,7 @@ body > header {
 }
 
 .title-container {
-  text-align: $align-title;
+  text-align: center;
   color: $color-title;
 }
 
@@ -212,7 +210,7 @@ body > header {
 }
 
 main h1 {
-	text-align: $align-title;
+	text-align: center;
 }
 
 /***
@@ -222,10 +220,10 @@ main h1 {
  */
 
 .primary-nav-outer-container {
-  margin-top: var(--spacing);
+  margin-top: var(--pico-spacing);
   background: $bg-footer;
-  border-top: $border-thick solid $border-primary;
-  border-bottom: $border-thick solid $border-primary;
+  border-top: var(--pico-border-width) solid $border-primary;
+  border-bottom: var(--pico-border-width) solid $border-primary;
 }
 
 nav {
@@ -237,8 +235,8 @@ nav {
   &.primary ul {
     display: flex;
     align-items: center;
-    justify-content: $align-nav;
-    gap: var(--spacing);
+    justify-content: center;
+    gap: var(--pico-spacing);
     list-style: none;
     width: 100%;
     margin: 0;
@@ -280,27 +278,27 @@ button,
 .steps {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing);
+  gap: var(--pico-spacing);
   justify-content: space-between;
-  margin-top: var(--spacing);
+  margin-top: var(--pico-spacing);
 }
 
 .card {
-  background: $bg-card;
-  border-radius: $border-radius-large;
-  padding: var(--spacing);
+  background: var(--pico-card-background-color);
+  border-radius: calc(var(--pico-border-radius)*2);
+  padding: var(--pico-spacing);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-top: $border-thick solid $border-primary;
-  color: $color-dark;
+  border-top: var(--pico-border-width) solid var(--pico-card-border-color);
+  color: var(--pico-card-background-color);
 
   h3 {
     color: $color-secondary;
-    margin-bottom: var(--spacing);
-    font-size: $font-size-large;
+    margin-bottom: var(--pico-spacing);
+    font-size: var(--pico-font-size-lg);
   }
 
   p {
-    margin-bottom: var(--spacing);
+    margin-bottom: var(--pico-spacing);
     color: $color-dark;
   }
 }
@@ -314,21 +312,21 @@ button,
 .request-template {
   color: $color-dark;
   max-width: 800px;
-  margin: var(--spacing-lg) auto;
-  padding: var(--spacing);
+  margin: calc(var(--spacing)*2) auto;
+  padding: var(--pico-spacing);
   background: $bg-card;
-  border-radius: $border-radius-med;
+  border-radius: var(--pico-border-radius);
   border-left: 4px solid $border-primary;
 
   h3 {
     color: $color-dark;
-    margin-bottom: var(--spacing);
+    margin-bottom: var(--pico-spacing);
   }
 
   p {
     color: $color-dark;
-    line-height: $line-height-standard;
-    margin-bottom: var(--spacing);
+    line-height: var(--pico-line-height);
+    margin-bottom: var(--pico-spacing);
   }
 }
 
@@ -336,7 +334,7 @@ button,
 .code-block {
   position: relative;
   background: $bg-code-block;
-  border-radius: $border-radius-med;
+  border-radius: var(--pico-border-radius);
   padding: 1.5rem;
   margin: 1.5rem 0;
   overflow: hidden;
@@ -353,8 +351,8 @@ button,
     display: block;
     color: $color-dark;
     font-family: 'Courier New', Courier, monospace;
-    font-size: $font-size-code-block;
-    line-height: $line-height-standard;
+    font-size: var(--pico-font-size-code);
+    line-height: var(--pico-line-height);
     white-space: pre-wrap;
     word-wrap: break-word;
   }
@@ -369,9 +367,9 @@ button,
   background: $color-button;
   color: $color-light;
   border: none;
-  border-radius: $border-radius-small;
+  border-radius: calc(var(--pico-border-radius)/2);
   cursor: pointer;
-  font-size: $font-size-small;
+  font-size: var(--pico-font-size-sm);
   transition: background 0.2s ease;
   z-index: 10;
 
@@ -387,9 +385,9 @@ button,
 // 10.3 Tip
 .tip {
   background: $bg-tip;
-  padding: var(--spacing-sm) var(--spacing);
-  border-radius: $border-radius-small;
-  margin-top: var(--spacing);
+  padding: var(--spacing-sm) var(--pico-spacing);
+  border-radius: calc(var(--pico-border-radius)/2);
+  margin-top: var(--pico-spacing);
   color: $color-light;
 }
 
@@ -411,10 +409,10 @@ button,
 
 footer {
   display: flex;
-  justify-content: $align-footer;
-  gap: var(--spacing);
-  margin-top: var(--spacing);
-  border-top: $border-thick solid $border-primary;
+  justify-content: center;
+  gap: var(--pico-spacing);
+  margin-top: var(--pico-spacing);
+  border-top: var(--pico-border-width) solid $border-primary;
   background: $bg-footer;
 
   a {
@@ -432,7 +430,7 @@ nav.socials {
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: var(--spacing);
+  gap: var(--pico-spacing);
 }
 
 .socials {
@@ -506,12 +504,12 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: $font-forms;
+  font-family: var(--pico-font-family-sans-serif-alt);
   color: $color-dark;
 }
 
 label {
-  font-family: $font-forms;
+  font-family: var(--pico-font-family-sans-serif-alt);
   color: $color-light;
 }
 
