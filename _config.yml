@@ -10,7 +10,7 @@ kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge 
 url: "https://jbrandon99.github.io"
-baseurl: ""
+baseurl: "/librarybooks4palestine"
 header_title: "The UK Palestine Library Book Campaign"
 header_subtitle: "  "
 seo_description: ""
