@@ -1,4 +1,4 @@
- ---
+---
 title: County Durham Libraries
 layout: default
 ---
