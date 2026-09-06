@@ -1,16 +1,26 @@
-repository: 
-url: "http://127.0.0.1:4000/" # the base hostname & protocol for your site, e.g. http://example.acom
-#baseurl: "palestinebooks4libraries" # the subpath of your site, e.g. /blog
-header_title: "The UK Palestine Library Book Campaign" # the name of your site, e.g. ACME Corp.
-header_subtitle: "A Microcampaign"
-seo_description: "This is my meta seo_description"
+# This is the config that worked before
+lsi: false
+safe: true
+#source: jbrandon99.github.io
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge 
+url: "https://jbrandon99.github.io"
+baseurl: ""
+header_title: "The UK Palestine Library Book Campaign"
+header_subtitle: "  "
+seo_description: ""
 colour_scheme: ""
 font_scheme: ""
-one_page_site: "" # disables nav
+one_page_site: ""
 sass:
   sass_dir: _sass
-  style: compressed        # optional
-  quiet_deps: true         # suppresses Pico.css dependency warnings
+  style: compressed
+  quiet_deps: true
 collections:
   pages:
     output: true
@@ -28,4 +38,4 @@ defaults:
   - scope:
       path: "_pages"
     values:
-      layout: default   
+      layout: default
