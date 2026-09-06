@@ -7,6 +7,7 @@ markdown
 - [x] Remove node_modules
 - [x] contact form
 - [ ] delete unused fonts
+- [ ] sticky header
 
 ### 1. Define Missing Variable
 - [ ] Define $max-width variable (currently referenced in commented code but never declared)

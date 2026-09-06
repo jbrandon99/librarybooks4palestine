@@ -6,7 +6,7 @@ title: Help us build a network of Palestine resources
   <div class="locations-page">
     <p>We're asking supporters to request books on Palestine at their local libraries. This page lists libraries that have already received requests, with contact details for making your own. If you don't see your library here, use our template to make a request — and then let us know so we can add it to the list.</p>
     
-    {% assign locations = site.locations %}
+    {% assign locations = site.locations  | sort: 'title' %}
     
     {%- if locations.size > 0 -%}
       <ul class="locations-list">

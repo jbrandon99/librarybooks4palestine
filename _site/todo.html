@@ -16,9 +16,86 @@
 	<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
 	<!-- Safari Pinned Tab -->
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#007AFF">
+    <script type="text/javascript">
+        function setTheme(theme) {
+          document.documentElement.setAttribute('data-theme', theme);
+          localStorage.setItem('theme', theme);
+        }
+
+        // Get saved theme or default
+        const savedTheme = localStorage.getItem('theme') || 'green';
+        setTheme(savedTheme);
+
+        // Toggle function
+        function toggleTheme() {
+          const current = document.documentElement.getAttribute('data-theme');
+          const next = current === 'green' ? 'light' : 'green';
+          setTheme(next);
+        }
+
+        function copyCode() {
+          // Get the code element
+          const codeElement = document.getElementById('template-code');
+          const codeText = codeElement.textContent;
+          
+          // Use the Clipboard API
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(codeText)
+              .then(() => {
+                showCopiedFeedback();
+              })
+              .catch(() => {
+                // Fallback for older browsers
+                fallbackCopy(codeText);
+              });
+          } else {
+            // Fallback for older browsers
+            fallbackCopy(codeText);
+          }
+        }
+
+        function fallbackCopy(text) {
+          // Create a temporary textarea
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          textarea.style.left = '-9999px';
+          document.body.appendChild(textarea);
+          
+          // Select and copy
+          textarea.select();
+          try {
+            document.execCommand('copy');
+            showCopiedFeedback();
+          } catch (err) {
+            alert('Could not copy text. Please select and copy manually.');
+          }
+          
+          // Remove the textarea
+          document.body.removeChild(textarea);
+        }
+
+        function showCopiedFeedback() {
+          const btn = document.querySelector('.copy-btn');
+          const originalText = btn.textContent;
+          
+          btn.textContent = '✅ Copied!';
+          btn.classList.add('copied');
+          
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.classList.remove('copied');
+          }, 2000);
+        }
+    </script>
   </head>
   <body class="standard-page">
-    	<header>
+    
+    <button class="theme-button" onclick="toggleTheme()">Switch Theme</button>
+     
+    
+      	<header>
   		<div class="title-outer-container">
 	  		<div class="container title-container">
 		  		<span class="site-title">
@@ -62,6 +139,7 @@
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Remove node_modules</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />contact form</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />delete unused fonts</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />sticky header</li>
 </ul>
 
 <h3 id="1-define-missing-variable">1. Define Missing Variable</h3>
@@ -246,7 +324,7 @@ main.container {
 			  
 			</ul>
 		</nav>
-		<div class="copyright"<p>Copyright Palestine Books for Libraries 2026</p></div>
+		<div class="copyright"><p>Copyright Palestine Books for Libraries 2026</p></div>
 	</div>
 </footer>	
 </html>

@@ -1,6 +1,5 @@
 ---
 title: Darlington Libraries
-url: darlington
 layout: default
 ---
 

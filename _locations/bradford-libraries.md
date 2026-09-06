@@ -15,8 +15,8 @@ To request a new book purchase, complete the [Libries Stock Suggestion Form](htt
 
 Books available in Bradford Libraries include
 
-- Palestine: a short history by  Colin Shindler
-- A Forever War: Israel and Palestine by Rashid Khalidi
-- The Palestine-Israeli conflict: a beginner's guide by Dan Cohn-Sherbok
-- Enter Ghost by Isabell Hammad
-- Occupation diaries by Raja Shehadeh
+- Shindler, Colin - Palestine: a short history by  
+- Khalidi, Rashid - A Forever War: Israel and Palestine by 
+- Cohn-Sherbok, Dan - The Palestine-Israeli conflict: a beginner's guide 
+- Hammad, Isabell - Enter Ghost (Fiction) 
+- Shehadeh, Raja - Occupation diaries 

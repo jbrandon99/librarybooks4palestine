@@ -6,7 +6,7 @@
     <meta name="description" content="This is my meta seo_description">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title>Palestine Books For Libraries - A UK based Microcampaign for Education - Newcastle Libraries</title>
+    <title>Palestine Books For Libraries - A UK based Microcampaign for Education - Brighton Libraries</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
     <link rel="stylesheet" href="/assets/css/main.css">
     <!-- Apple Touch Icons -->
@@ -16,9 +16,86 @@
 	<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
 	<!-- Safari Pinned Tab -->
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#007AFF">
+    <script type="text/javascript">
+        function setTheme(theme) {
+          document.documentElement.setAttribute('data-theme', theme);
+          localStorage.setItem('theme', theme);
+        }
+
+        // Get saved theme or default
+        const savedTheme = localStorage.getItem('theme') || 'green';
+        setTheme(savedTheme);
+
+        // Toggle function
+        function toggleTheme() {
+          const current = document.documentElement.getAttribute('data-theme');
+          const next = current === 'green' ? 'light' : 'green';
+          setTheme(next);
+        }
+
+        function copyCode() {
+          // Get the code element
+          const codeElement = document.getElementById('template-code');
+          const codeText = codeElement.textContent;
+          
+          // Use the Clipboard API
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(codeText)
+              .then(() => {
+                showCopiedFeedback();
+              })
+              .catch(() => {
+                // Fallback for older browsers
+                fallbackCopy(codeText);
+              });
+          } else {
+            // Fallback for older browsers
+            fallbackCopy(codeText);
+          }
+        }
+
+        function fallbackCopy(text) {
+          // Create a temporary textarea
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          textarea.style.left = '-9999px';
+          document.body.appendChild(textarea);
+          
+          // Select and copy
+          textarea.select();
+          try {
+            document.execCommand('copy');
+            showCopiedFeedback();
+          } catch (err) {
+            alert('Could not copy text. Please select and copy manually.');
+          }
+          
+          // Remove the textarea
+          document.body.removeChild(textarea);
+        }
+
+        function showCopiedFeedback() {
+          const btn = document.querySelector('.copy-btn');
+          const originalText = btn.textContent;
+          
+          btn.textContent = '✅ Copied!';
+          btn.classList.add('copied');
+          
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.classList.remove('copied');
+          }, 2000);
+        }
+    </script>
   </head>
   <body class="standard-page">
-    	<header>
+    
+    <button class="theme-button" onclick="toggleTheme()">Switch Theme</button>
+     
+    
+      	<header>
   		<div class="title-outer-container">
 	  		<div class="container title-container">
 		  		<span class="site-title">
@@ -49,28 +126,35 @@
 
   	<main class="container">
   		<head>
-  			<h1>Newcastle Libraries</h1>
+  			<h1>Brighton Libraries</h1>
   		</head>
   		<content class="wysiwyg-content">
-  			<p>Bradford Libraries already stock a range of books on Palestine.</p>
+  			<p>Brighton Libraries already stock a range of books on Palestine. They have many books of fiction and non-fiction, many published since the start of the 2023 genocide as well as some interesting archival resources.</p>
 
 <h3 id="book-search">Book Search</h3>
-<p>To search the Darlington Library catalogue and reserve a book see the <a href="https://www2.darlington.gov.uk/extended-search">Library Search Page</a>.</p>
+<p>To search the Brighton Library catalogue and reserve a book see the <a href="https://brighton-hove.spydus.co.uk/">Library Search Page</a>.</p>
 
 <h3 id="purchase-request">Purchase Request</h3>
-<p>To request a new book purchase, complete the (Libries Stock Suggestion Form)[https://onlineforms.bradford.gov.uk/ufs/Libraries_stock.eb?ebd=0&amp;ebz=1_1788110536941]</p>
+<p>To request a new book purchase, go to the <a href="https://brighton-hove.spydus.co.uk/">Library Search Page</a> and click the ‘suggest a title’ link on the right-hand side and complete the form.</p>
 
 <h3 id="books">Books</h3>
 
-<p>Books available in Bradford Libraries include</p>
+<p>Books available in Brighton Libraries include</p>
 
 <ul>
-  <li>Palestine: a short history by  Colin Shindler</li>
-  <li>A Forever War : Israel and Palestine by Rashid Khalidi</li>
-  <li>The Palestine-Israeli conflict: a beginner’s guide by Dan Cohn-Sherbok</li>
-  <li>Enter Ghost by Isabell Hammad</li>
-  <li>Occupation diaries by Raja Shehadeh</li>
+  <li>Rad, Assal - Don’t say Palestine: How the media manufactured consent for genocide</li>
+  <li>Abdelnoor, Amy - Ever land (Fiction)</li>
+  <li>Shehadeh, Raja - Forgotten: searching for Palestine’s hidden places and lost memorials</li>
+  <li>Khalil, Mahmoud - No land to stand on: protest, Palestine and being unfree in America</li>
+  <li>Assadi, Hannah Lillith - Paradiso 17 (Fiction, electronic book)</li>
+  <li>Weizman, Eyal - Ungrounding: the architecture of genocide</li>
+  <li>Alnaouq, Ahmed (editor) - We Are Not Numbers: the voices of Gaza’s youth</li>
+  <li>Albanese, Francesca - When the world sleeps: stories, words and wounds of Palestine</li>
+  <li>Jorie Graham (editor) - You must live: new poetry from Palestine</li>
+  <li>Oborne, Peter - Complicit: Britain’s role in the destruction of Gaza</li>
+  <li>Aslan, Reza - A kids book about Israel &amp; Palestine</li>
 </ul>
+
 
   		</content>
 	</main>
@@ -86,7 +170,7 @@
 			  
 			</ul>
 		</nav>
-		<div class="copyright"<p>Copyright Palestine Books for Libraries 2026</p></div>
+		<div class="copyright"><p>Copyright Palestine Books for Libraries 2026</p></div>
 	</div>
 </footer>	
 </html>
