@@ -88,11 +88,37 @@
             btn.classList.remove('copied');
           }, 2000);
         }
+
+
+        // Check screen size and add/remove class
+        function toggleButtonClass() {
+          const button = document.getElementById('themeToggleItem');
+          if (button) {
+            if (window.innerWidth >= 1024) {
+              button.classList.add('theme-button');
+              //alert('more');
+            } else {
+              button.classList.remove('theme-button');
+              //alert('less');
+            }
+          }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+          toggleButtonClass();
+        });
+
+        // Run on resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(toggleButtonClass, 100);
+        });
     </script>
   </head>
   <body class="standard-page">
     
-    <button class="theme-button" onclick="toggleTheme()">Switch Theme</button>
+    
      
     
       	<header>
@@ -118,6 +144,7 @@
 					  
 					    <li><a href="/contact">Contact</a></li>
 					  
+					  	<li><a href="#" id="themeToggleItem" onclick="toggleTheme()">Switch Theme</li></a>
 					</ul>
 				</nav>
 			</div>

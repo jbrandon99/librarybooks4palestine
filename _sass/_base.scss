@@ -136,7 +136,7 @@ body {
 
 
 // 5.1 Container Override
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
   body.landing-page main.container.container {
     max-width: var(--max-width-landing-page);
   }
@@ -144,28 +144,28 @@ body {
   	max-width: var(--max-width-standard-page);
   	margin: auto;
   }
-}
 
-// 5.2 Main Container
-main.container {
-  padding-top: calc(3*var(--pico-spacing));
-  flex:1;
-}
+  // 5.2 Main Container
+  main.container {
+    padding-top: calc(3*var(--pico-spacing));
+    flex:1;
+  }
 
-.primary-and-sidebar {
-	display: flex;
+  .primary-and-sidebar {
+  	display: flex;
 
-	& .primary {
-		flex: 3;
-		padding: var(--pico-spacing);
-		padding-right: calc(var(--pico-spacing)*2);
-	}
+  	& .primary {
+  		flex: 3;
+  		padding: var(--pico-spacing);
+  		padding-right: calc(var(--pico-spacing)*2);
+  	}
 
-	& .sidebar {
-		flex: 2;
-		padding: var(--pico-spacing);
-		padding-left: calc(var(--pico-spacing)*2);
-	}
+  	& .sidebar {
+  		flex: 2;
+  		padding: var(--pico-spacing);
+  		padding-left: calc(var(--pico-spacing)*2);
+  	}
+  }
 }
 
 /***
@@ -207,38 +207,41 @@ main h1 {
  * ========================================
  */
 
-.primary-nav-outer-container {
-  background: var(--pico-nav-main-background);
-  border-top: var(--pico-border-width) solid var(--pico-nav-border);
-  border-bottom: var(--pico-border-width) solid var(--pico-nav-border);
+
+@media (min-width: 1024px) { // What is breakpoint?
+
+  .primary-nav-outer-container {
+    background: var(--pico-nav-main-background);
+    border-top: var(--pico-border-width) solid var(--pico-nav-border);
+    border-bottom: var(--pico-border-width) solid var(--pico-nav-border);
+  }
+
+  nav {
+
+    &.primary {
+      width: 100%;
+    }
+
+    &.primary ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--pico-spacing);
+      list-style: none;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    &.primary a {
+      display: inline-block;
+      padding: calc(var(--pico-spacing)/2) calc(2*var(--pico-spacing));
+      color: var(--pico-nav-color);
+      background-color: var(--pico-nav-link-background);
+      text-decoration: none;
+    }
+  }
 }
-
-nav {
-
-  &.primary {
-    width: 100%;
-  }
-
-  &.primary ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--pico-spacing);
-    list-style: none;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  &.primary a {
-    display: inline-block;
-    padding: calc(var(--pico-spacing)/2) calc(2*var(--pico-spacing));
-    color: var(--pico-nav-color);
-    background-color: var(--pico-nav-link-background);
-    text-decoration: none;
-  }
-}
-
 /***
  * ========================================
  * 8. BUTTONS & FORM ELEMENTS
@@ -460,10 +463,32 @@ nav.socials {
  * ========================================
  */
 
-@media (max-width: 600px) {
-  .request-template {
-    padding: var(--pico-spacing);
+@media (max-width: 600px) { // What is breakpoint?
+  .primary-and-sidebar {
+    display: flex;
+    flex-direction: column;   
+
+    & .primary {
+      flex: 2;
+      padding: var(--pico-spacing);
+      //padding-right: calc(var(--pico-spacing)*2);
+    }
+
+    & .sidebar {
+      flex: 2;
+      padding: var(--pico-spacing);
+      //padding-left: calc(var(--pico-spacing)*2);
+    }
   }
+
+  .locations-page ul {
+    column-count: 2;
+  }
+
+// ERRRR WHATS THIS
+.request-template {
+    padding: var(--pico-spacing);
+ }
 
   .code-block {
     padding: var(--pico-spacing);
@@ -512,12 +537,12 @@ button, .button {
  */
 
 .theme-button {
+  @extend .button;
   position: fixed;
   top: 10px;
   right: 10px;
   padding: var(--pico-spacing) calc(2*var(--pico-spacing));
   background: var(--pico-primary);
-  color: var(--pico-color);
   font-size: var(--pico-font-size-sm);
   border: none;
   border-radius: var(--pico-border-radius);
