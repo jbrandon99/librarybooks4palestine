@@ -207,6 +207,38 @@ main h1 {
  * ========================================
  */
 
+nav.primary { 
+    display: block;
+
+    ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    li {
+      background-color: var(--pico-secondary);
+      border: 1px dashed var(--pico-color);
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      color: var(--pico-color);
+      display: block;
+      margin: 0;
+      padding: var(--pico-spacing) calc(var(--pico-spacing)/2);
+      order: 3;
+      width: 100%;
+      text-align: center;
+      //display: none;
+
+      &:hover {
+        text-decoration-color: var(--pico-color);
+      }
+    }
+  }
+}
 
 @media (min-width: 1024px) { // What is breakpoint?
 

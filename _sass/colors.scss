@@ -2,7 +2,7 @@
 [data-theme="Green"],
 :root:not([data-theme="dark"]):not([data-theme="light"]),
 :host(:not([data-theme="dark"]):not([data-theme="light"])) {
-  color-scheme: dark;
+  color-scheme: green;
   
   /* Background & Base */
   --pico-background-color: #2C6C0C;      
@@ -66,11 +66,24 @@
   /* Links */
   --pico-link-color: var(--pico-muted-color);
 
+
   /* Nav */
-  --pico-nav-color: var(--pico-color);
-  --pico-nav-main-background: var(--pico-secondary);
-  --pico-nav-link-background: var(--pico-primary);
-  --pico-nav-border: var(--pico-primary);
+  nav.primary ul a {
+        --pico-color: #fff;
+        --pico-underline: #fff;
+        --pico-text-decoration-color: #fff;
+        --pico-nav-color: var(--pico-color);
+        --pico-text-decoration-color: var(--pico-color);
+        --pico-nav-main-background: var(--pico-secondary);
+        --pico-nav-link-background: var(--pico-primary);
+        --pico-nav-border: var(--pico-primary);
+
+        &:hover {
+          --pico-color: #fff;
+          --pico-underline: #fff;
+          --pico-text-decoration-color: #fff;
+        }
+  }
   
   /* Mark */
   --pico-mark-background-color: rgba(217, 53, 38, 0.3);
