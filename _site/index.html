@@ -114,6 +114,12 @@
           clearTimeout(resizeTimer);
           resizeTimer = setTimeout(toggleButtonClass, 100);
         });
+
+        function toggleMenu (menuToggle) {
+          var menu = document.getElementById('primaryNav');
+          menu.classList.toggle("is-active");
+          menuToggle.classList.toggle("is-active");
+        }
     </script>
   </head>
   <body class="landing-page">
@@ -123,15 +129,21 @@
   
     	<header>
   		<div class="title-outer-container">
-	  		<div class="container title-container">
+	  		<div class="title-container">
 		  		<span class="site-title">
-		  			<span><h2>&#127477;&#127480; The UK Palestine Library Book Campaign &#127477;&#127480;<h2></span>
+		  			<span><h2>Palestine Books in Libraries<h2></span>
 		  		</span>
 		  	</div>
+		  	<div class="menu-toggle" id="menuToggleButton" onclick="toggleMenu(this)">
+		      <span class="bar"></span>
+		      <span class="bar"></span>
+		      <span class="bar"></span>
+		    </div>
 		</div>	
-			  	<div class="primary-nav-outer-container">
+		 
+	  	<div class="primary-nav-outer-container">
 		  	<div class="primary-nav-container">
-				<nav class="primary">
+				<nav class="primary" id="primaryNav">
 			  		<ul>
 					  
 					    <li><a href="/">Home</a></li>

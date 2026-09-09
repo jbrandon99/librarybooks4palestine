@@ -180,17 +180,23 @@ body > header {
 }
 
 .title-outer-container {
+  display: flex;
+
   padding-bottom: calc(var(--pico-spacing)/4);
 }
 
 .title-container {
-  text-align: center;
+  margin-left: var(--pico-spacing);
   color: var(--pico-color);
 }
 
-.site-title span {
-  @extend h3;
-  font-weight: bold;
+.site-title { 
+  width: 100%;
+
+  span {
+    @extend h3;
+    font-weight: bold;
+  }
 }
 
 .site-title-break {
@@ -207,8 +213,64 @@ main h1 {
  * ========================================
  */
 
+
+.menu-toggle {
+  width: 46px;
+  height: 46px;
+  justify-self: end;
+  margin: calc(var(--pico-spacing)/2);
+  padding: calc(var(--pico-spacing)/2);
+  background-color: var(--pico-secondary);
+  color: var(--pico-color);
+  border-radius: calc(var(--pico-border-radius)/2);
+  // display: none;
+}
+
+.menu-toggle:hover{
+  cursor: pointer;
+}
+
+.menu-toggle .bar{
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--pico-color);
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+
+#menuToggleButton.is-active .bar:nth-child(2){
+  opacity: 0;
+}
+
+#menuToggleButton.is-active .bar:nth-child(1){
+  -webkit-transform: translateY(8px) rotate(45deg);
+  -ms-transform: translateY(8px) rotate(45deg);
+  -o-transform: translateY(8px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
+}
+
+#menuToggleButton.is-active .bar:nth-child(3){
+  -webkit-transform: translateY(-8px) rotate(-45deg);
+  -ms-transform: translateY(-8px) rotate(-45deg);
+  -o-transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
+}
 nav.primary { 
-    display: block;
+
+    max-height: 0;
+    transition: all 0.3s ease-out;
+    overflow: hidden; 
+    border-top: var(--pico-border-width) solid var(--pico-primary);
+    border-bottom: var(--pico-border-width) solid var(--pico-primary);
+    
+    &.is-active {
+      display: block;
+      max-height: 800px;
+    }
 
     ul {
     display: flex;
@@ -217,11 +279,15 @@ nav.primary {
     align-items: center;
 
     li {
-      background-color: var(--pico-secondary);
-      border: 1px dashed var(--pico-color);
+      background-color: var(--pico-primary);
+      border-top: 1px dashed var(--pico-secondary);
       width: 100%;
       margin: 0;
       padding: 0;
+
+      &:first-child {
+        border:none;
+      }
     }
     a {
       color: var(--pico-color);

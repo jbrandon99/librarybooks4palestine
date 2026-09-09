@@ -114,5 +114,11 @@
           clearTimeout(resizeTimer);
           resizeTimer = setTimeout(toggleButtonClass, 100);
         });
+
+        function toggleMenu (menuToggle) {
+          var menu = document.getElementById('primaryNav');
+          menu.classList.toggle("is-active");
+          menuToggle.classList.toggle("is-active");
+        }
     </script>
   </head>
