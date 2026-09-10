@@ -1,10 +1,12 @@
+ 
 	  	<div class="primary-nav-outer-container">
-		  	<div class="container primary-nav-container">
-				<nav class="primary">
+		  	<div class="primary-nav-container">
+				<nav class="primary" id="primaryNav">
 			  		<ul>
 					  {% for item in site.data.config.nav %}
 					    <li><a href="{{ item.link }}">{{ item.title }}</a></li>
 					  {% endfor %}
+					  	<li><a href="#" id="themeToggleItem" onclick="toggleTheme()">Switch Theme</li></a>
 					</ul>
 				</nav>
 			</div>

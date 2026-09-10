@@ -2,7 +2,7 @@
 [data-theme="Green"],
 :root:not([data-theme="dark"]):not([data-theme="light"]),
 :host(:not([data-theme="dark"]):not([data-theme="light"])) {
-  color-scheme: dark;
+  color-scheme: green;
   
   /* Background & Base */
   --pico-background-color: #2C6C0C;      
@@ -66,11 +66,24 @@
   /* Links */
   --pico-link-color: var(--pico-muted-color);
 
+
   /* Nav */
-  --pico-nav-color: var(--pico-color);
-  --pico-nav-main-background: var(--pico-secondary);
-  --pico-nav-link-background: var(--pico-primary);
-  --pico-nav-border: var(--pico-primary);
+  --pico-nav-border: #96B686;
+  nav.primary ul a {
+        --pico-color: #fff;
+        --pico-underline: #fff;
+        --pico-text-decoration-color: #fff;
+        --pico-nav-color: var(--pico-color);
+        --pico-text-decoration-color: var(--pico-color);
+        --pico-nav-main-background: rgba(44, 108, 12, 0.97);
+        --pico-nav-link-background: rgba(44, 108, 12, 0.97);
+
+        &:hover {
+          --pico-color: #fff;
+          --pico-underline: #fff;
+          --pico-text-decoration-color: #fff;
+        }
+  }
   
   /* Mark */
   --pico-mark-background-color: rgba(217, 53, 38, 0.3);
@@ -257,10 +270,26 @@
   --pico-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
   
   /* Nav */
-  --pico-nav-color: var(--pico-background-color);
-  --pico-nav-main-background: var(--pico-background-color);
-  --pico-nav-link-background: var(--pico-secondary);
-  --pico-nav-border: var(--pico-secondary);
+  /* Nav */
+  --pico-menu-background-color: rgba(255, 255, 255, 0.9);
+  --pico-nav-border: var(--pico-primary);
+
+  nav.primary ul a {
+        --pico-color: #202632;
+        --pico-underline: #202632;
+        --pico-text-decoration-color: #202632;
+        --pico-nav-color: var(--pico-color);
+        --pico-text-decoration-color: var(--pico-color);
+        --pico-nav-main-background: #fff;
+        --pico-nav-link-background: #fff;
+
+        &:hover {
+          --pico-color: #202632;
+          --pico-underline: #202632;
+          --pico-text-decoration-color: #202632;
+        }
+  }
+  
 
   /* Headings */
   --pico-h1-color: #202632;

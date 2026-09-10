@@ -4,6 +4,74 @@
  * ========================================
  */
 
+@-webkit-keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    10% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    10% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    10% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    10% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
 // Load files
 
 @import "colors";
@@ -11,16 +79,19 @@
 @font-face {
   font-family: 'Lora';
   src: url("/assets/fonts/lora/static/Lora-Regular.ttf") format("truetype");
+  font-display: swap; 
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
   src: url("/assets/fonts/source_sans_3/static/SourceSans3-Regular.ttf") format("truetype");
+  font-display: swap; 
 }
 
 @font-face {
   font-family: 'Inter';
   src: url("/assets/fonts/inter/static/Inter_18pt-Regular.ttf") format("truetype");
+  font-display: swap; 
 }
 
 :root {
@@ -42,7 +113,7 @@
 
   // Typography
   --pico-font-family-sans-serif: system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Helvetica, Arial, "Helvetica Neue", sans-serif;
-  --pico-font-family-serif: 'Lora', Georgia, 'Times New Roman', serif;
+  --pico-font-family-serif: Lora, Georgia, 'Times New Roman', serif;
   --pico-font-family-sans-serif-alt: 'Inter', sans-serif;
   --pico-font-size: 16px; // browser default may differ
   --pico-font-size-lg: calc(var(--pico-font-size)*1.5);
@@ -136,7 +207,7 @@ body {
 
 
 // 5.1 Container Override
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
   body.landing-page main.container.container {
     max-width: var(--max-width-landing-page);
   }
@@ -144,28 +215,28 @@ body {
   	max-width: var(--max-width-standard-page);
   	margin: auto;
   }
-}
 
-// 5.2 Main Container
-main.container {
-  padding-top: calc(3*var(--pico-spacing));
-  flex:1;
-}
+  // 5.2 Main Container
+  main.container {
+    padding-top: calc(3*var(--pico-spacing));
+    flex:1;
+  }
 
-.primary-and-sidebar {
-	display: flex;
+  .primary-and-sidebar {
+  	display: flex;
 
-	& .primary {
-		flex: 3;
-		padding: var(--pico-spacing);
-		padding-right: calc(var(--pico-spacing)*2);
-	}
+  	& .primary {
+  		flex: 3;
+  		padding: var(--pico-spacing);
+  		padding-right: calc(var(--pico-spacing)*2);
+  	}
 
-	& .sidebar {
-		flex: 2;
-		padding: var(--pico-spacing);
-		padding-left: calc(var(--pico-spacing)*2);
-	}
+  	& .sidebar {
+  		flex: 2;
+  		padding: var(--pico-spacing);
+  		padding-left: calc(var(--pico-spacing)*2);
+  	}
+  }
 }
 
 /***
@@ -180,17 +251,23 @@ body > header {
 }
 
 .title-outer-container {
+  display: flex;
+
   padding-bottom: calc(var(--pico-spacing)/4);
 }
 
 .title-container {
-  text-align: center;
+  margin-left: var(--pico-spacing);
   color: var(--pico-color);
 }
 
-.site-title span {
-  @extend h3;
-  font-weight: bold;
+.site-title { 
+  width: 100%;
+
+  span {
+    @extend h3;
+    font-weight: bold;
+  }
 }
 
 .site-title-break {
@@ -207,38 +284,164 @@ main h1 {
  * ========================================
  */
 
+
+.menu-toggle {
+  width: 46px;
+  height: 46px;
+  justify-self: end;
+  margin: calc(var(--pico-spacing)/2);
+  padding: calc(var(--pico-spacing)/2);
+  background-color: var(--pico-secondary);
+  color: var(--pico-color);
+  border-radius: calc(var(--pico-border-radius)/2);
+  // display: none;
+}
+
+.menu-toggle:hover{
+  cursor: pointer;
+}
+
+.menu-toggle .bar{
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--pico-color);
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+#menuToggleButton.is-active .bar:nth-child(2){
+  opacity: 0;
+}
+
+#menuToggleButton.is-active .bar:nth-child(1){
+  -webkit-transform: translateY(8px) rotate(45deg);
+  -ms-transform: translateY(8px) rotate(45deg);
+  -o-transform: translateY(8px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
+}
+
+#menuToggleButton.is-active .bar:nth-child(3){
+  -webkit-transform: translateY(-8px) rotate(-45deg);
+  -ms-transform: translateY(-8px) rotate(-45deg);
+  -o-transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
+}
 .primary-nav-outer-container {
-  background: var(--pico-nav-main-background);
-  border-top: var(--pico-border-width) solid var(--pico-nav-border);
-  border-bottom: var(--pico-border-width) solid var(--pico-nav-border);
+  position: relative;
+}
+.primary-nav-container {
+  position:absolute;
 }
 
-nav {
+nav.primary { 
 
-  &.primary {
-    width: 100%;
-  }
+    max-height: 0;
+    transition: all 0.3s ease-out;
+    overflow: hidden; 
+    border-top: var(--pico-border-width) solid var(--pico-primary);
+    border-bottom: var(--pico-border-width) solid var(--pico-primary);
 
-  &.primary ul {
+    @media (min-width: 1024px) {
+      border:none;
+    }
+    
+    &.is-active {
+      display: block;
+      max-height: 800px;
+    }
+
+    ul {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    gap: var(--pico-spacing);
-    list-style: none;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
 
-  &.primary a {
-    display: inline-block;
-    padding: calc(var(--pico-spacing)/2) calc(2*var(--pico-spacing));
-    color: var(--pico-nav-color);
-    background-color: var(--pico-nav-link-background);
-    text-decoration: none;
+    li {
+      background-color: var(--pico-menu-background-color);
+      border-top: 1px solid var(--pico-nav-border);
+      width: 100%;
+      margin: 0;
+      padding: 0;
+
+      &:first-child {
+        border:none;
+      }
+      @media (min-width: 1024px) {
+        border:none;
+      }
+    }
+    a {
+      background-color: var(--pico-nav-main-background);
+      color: var(--pico-color);
+      display: block;
+      margin: 0;
+      padding: var(--pico-spacing) calc(var(--pico-spacing)/2);
+      order: 3;
+      width: 100%;
+      text-align: center;
+      //display: none;
+
+      &:hover {
+        text-decoration-color: var(--pico-color);
+      }
+    }
   }
 }
 
+@media (min-width: 1024px) { // What is breakpoint?
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .primary-nav-outer-container {
+    background: var(--pico-nav-main-background);
+    border-top: var(--pico-border-width) solid var(--pico-nav-border);
+    border-bottom: var(--pico-border-width) solid var(--pico-nav-border);
+  }
+  .primary-nav-outer-container {
+    position: static;
+  }
+  .primary-nav-container {
+    position:static;
+  }
+
+
+
+  nav {
+
+    &.primary {
+      width: 100%;
+      max-height: none;
+    }
+
+    &.primary ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--pico-spacing);
+      list-style: none;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    &.primary ul li {
+      width: auto;
+    }
+    &.primary a {
+      display: inline-block;
+      padding: calc(var(--pico-spacing)/2) calc(2*var(--pico-spacing));
+      color: var(--pico-nav-color);
+      background-color: var(--pico-nav-link-background);
+      text-decoration: none;
+    }
+  }
+}
 /***
  * ========================================
  * 8. BUTTONS & FORM ELEMENTS
@@ -460,10 +663,32 @@ nav.socials {
  * ========================================
  */
 
-@media (max-width: 600px) {
-  .request-template {
-    padding: var(--pico-spacing);
+@media (max-width: 600px) { // What is breakpoint?
+  .primary-and-sidebar {
+    display: flex;
+    flex-direction: column;   
+
+    & .primary {
+      flex: 2;
+      padding: var(--pico-spacing);
+      //padding-right: calc(var(--pico-spacing)*2);
+    }
+
+    & .sidebar {
+      flex: 2;
+      padding: var(--pico-spacing);
+      //padding-left: calc(var(--pico-spacing)*2);
+    }
   }
+
+  .locations-page ul {
+    column-count: 2;
+  }
+
+// ERRRR WHATS THIS
+.request-template {
+    padding: var(--pico-spacing);
+ }
 
   .code-block {
     padding: var(--pico-spacing);
@@ -510,17 +735,31 @@ button, .button {
  * 14. ACTION BUTTONS
  * ========================================
  */
-
-.theme-button {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  padding: var(--pico-spacing) calc(2*var(--pico-spacing));
-  background: var(--pico-primary);
-  color: var(--pico-color);
-  font-size: var(--pico-font-size-sm);
-  border: none;
-  border-radius: var(--pico-border-radius);
-  cursor: pointer;
-  z-index: 1000;
+@media (min-width: 1024px) {
+  #themeToggleItem {
+    display: block;
+    visibility: hidden;
+    -webkit-animation: fadeInFromNone 1.5s ease-out;
+    -moz-animation: fadeInFromNone 1.5s ease-out;
+    -o-animation: fadeInFromNone 1.5s ease-out;
+    animation: fadeInFromNone 1.5s ease-out;
+  }
 }
+
+/* Javascript only applies this class on desktop browsers */
+  #themeToggleItem.theme-button {
+    @extend .button;
+    visibility: visible;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    height: 56px;
+    max-width: 156px;
+    padding: var(--pico-spacing) calc(2*var(--pico-spacing));
+    background: var(--pico-primary);
+    font-size: var(--pico-font-size-sm);
+    border: none;
+    border-radius: var(--pico-border-radius);
+    cursor: pointer;
+    z-index: 1000;
+  }

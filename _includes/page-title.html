@@ -1,10 +1,15 @@
   	<header>
   		<div class="title-outer-container">
-	  		<div class="container title-container">
+	  		<div class="title-container">
 		  		<span class="site-title">
-		  			<span><h2>&#127477;&#127480; {{ site.header_title }} &#127477;&#127480;<h2></span>
+		  			<span><h2>{{ site.header_title }}<h2></span>
 		  		</span>
 		  	</div>
+		  	<div class="menu-toggle" id="menuToggleButton" onclick="toggleMenu(this)" style="display: none;">
+		      <span class="bar"></span>
+		      <span class="bar"></span>
+		      <span class="bar"></span>
+		    </div>
 		</div>	
 		{% include nav.html %}
   	</header>
