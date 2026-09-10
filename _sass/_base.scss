@@ -4,6 +4,74 @@
  * ========================================
  */
 
+@-webkit-keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    10% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    10% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    10% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    10% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
 // Load files
 
 @import "colors";
@@ -11,16 +79,19 @@
 @font-face {
   font-family: 'Lora';
   src: url("/assets/fonts/lora/static/Lora-Regular.ttf") format("truetype");
+  font-display: swap; 
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
   src: url("/assets/fonts/source_sans_3/static/SourceSans3-Regular.ttf") format("truetype");
+  font-display: swap; 
 }
 
 @font-face {
   font-family: 'Inter';
   src: url("/assets/fonts/inter/static/Inter_18pt-Regular.ttf") format("truetype");
+  font-display: swap; 
 }
 
 :root {
@@ -42,7 +113,7 @@
 
   // Typography
   --pico-font-family-sans-serif: system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Helvetica, Arial, "Helvetica Neue", sans-serif;
-  --pico-font-family-serif: 'Lora', Georgia, 'Times New Roman', serif;
+  --pico-font-family-serif: Lora, Georgia, 'Times New Roman', serif;
   --pico-font-family-sans-serif-alt: 'Inter', sans-serif;
   --pico-font-size: 16px; // browser default may differ
   --pico-font-size-lg: calc(var(--pico-font-size)*1.5);
@@ -242,6 +313,7 @@ main h1 {
 }
 
 
+
 #menuToggleButton.is-active .bar:nth-child(2){
   opacity: 0;
 }
@@ -259,6 +331,13 @@ main h1 {
   -o-transform: translateY(-8px) rotate(-45deg);
   transform: translateY(-8px) rotate(-45deg);
 }
+.primary-nav-outer-container {
+  position: relative;
+}
+.primary-nav-container {
+  position:absolute;
+}
+
 nav.primary { 
 
     max-height: 0;
@@ -266,6 +345,10 @@ nav.primary {
     overflow: hidden; 
     border-top: var(--pico-border-width) solid var(--pico-primary);
     border-bottom: var(--pico-border-width) solid var(--pico-primary);
+
+    @media (min-width: 1024px) {
+      border:none;
+    }
     
     &.is-active {
       display: block;
@@ -279,8 +362,8 @@ nav.primary {
     align-items: center;
 
     li {
-      background-color: var(--pico-primary);
-      border-top: 1px dashed var(--pico-secondary);
+      background-color: var(--pico-menu-background-color);
+      border-top: 1px solid var(--pico-nav-border);
       width: 100%;
       margin: 0;
       padding: 0;
@@ -288,8 +371,12 @@ nav.primary {
       &:first-child {
         border:none;
       }
+      @media (min-width: 1024px) {
+        border:none;
+      }
     }
     a {
+      background-color: var(--pico-nav-main-background);
       color: var(--pico-color);
       display: block;
       margin: 0;
@@ -308,16 +395,29 @@ nav.primary {
 
 @media (min-width: 1024px) { // What is breakpoint?
 
+  .menu-toggle {
+    display: none;
+  }
+
   .primary-nav-outer-container {
     background: var(--pico-nav-main-background);
     border-top: var(--pico-border-width) solid var(--pico-nav-border);
     border-bottom: var(--pico-border-width) solid var(--pico-nav-border);
   }
+  .primary-nav-outer-container {
+    position: static;
+  }
+  .primary-nav-container {
+    position:static;
+  }
+
+
 
   nav {
 
     &.primary {
       width: 100%;
+      max-height: none;
     }
 
     &.primary ul {
@@ -330,7 +430,9 @@ nav.primary {
       margin: 0;
       padding: 0;
     }
-
+    &.primary ul li {
+      width: auto;
+    }
     &.primary a {
       display: inline-block;
       padding: calc(var(--pico-spacing)/2) calc(2*var(--pico-spacing));
@@ -633,17 +735,31 @@ button, .button {
  * 14. ACTION BUTTONS
  * ========================================
  */
-
-.theme-button {
-  @extend .button;
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  padding: var(--pico-spacing) calc(2*var(--pico-spacing));
-  background: var(--pico-primary);
-  font-size: var(--pico-font-size-sm);
-  border: none;
-  border-radius: var(--pico-border-radius);
-  cursor: pointer;
-  z-index: 1000;
+@media (min-width: 1024px) {
+  #themeToggleItem {
+    display: block;
+    visibility: hidden;
+    -webkit-animation: fadeInFromNone 1.5s ease-out;
+    -moz-animation: fadeInFromNone 1.5s ease-out;
+    -o-animation: fadeInFromNone 1.5s ease-out;
+    animation: fadeInFromNone 1.5s ease-out;
+  }
 }
+
+/* Javascript only applies this class on desktop browsers */
+  #themeToggleItem.theme-button {
+    @extend .button;
+    visibility: visible;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    height: 56px;
+    max-width: 156px;
+    padding: var(--pico-spacing) calc(2*var(--pico-spacing));
+    background: var(--pico-primary);
+    font-size: var(--pico-font-size-sm);
+    border: none;
+    border-radius: var(--pico-border-radius);
+    cursor: pointer;
+    z-index: 1000;
+  }
