@@ -31,6 +31,7 @@
   /* Secondary (Dark) */
   --pico-secondary: #202632;             
   --pico-secondary-background: #202632;
+  --pico-secondary-semitransparent: rgba(32, 38, 50, 0.5);  
   --pico-secondary-border: #202632;
   --pico-secondary-underline: rgba(32, 38, 50, 0.5);
   --pico-secondary-hover: #2c3342;
@@ -69,6 +70,7 @@
 
   /* Nav */
   --pico-nav-border: #96B686;
+  --pico-menu-background-color: rgba(44, 108, 12, 0.97);
   nav.primary ul a {
         --pico-color: #fff;
         --pico-underline: #fff;
@@ -245,6 +247,7 @@
   /* Secondary (Green) */
   --pico-secondary: #2C6C0C;            
   --pico-secondary-background: #2C6C0C;
+  --pico-secondary-semitransparent: rgba(44, 108, 12, 0.8); 
   --pico-secondary-border: #2C6C0C;
   --pico-secondary-underline: rgba(44, 108, 12, 0.4);
   --pico-secondary-hover: #1f4e09;
@@ -280,7 +283,7 @@
         --pico-text-decoration-color: #202632;
         --pico-nav-color: var(--pico-color);
         --pico-text-decoration-color: var(--pico-color);
-        --pico-nav-main-background: #fff;
+        --pico-nav-desktop-background: var(--pico-secondary);
         --pico-nav-link-background: #fff;
 
         &:hover {

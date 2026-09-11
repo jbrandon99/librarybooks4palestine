@@ -108,6 +108,12 @@
 
         document.addEventListener('DOMContentLoaded', function() {
           toggleButtonClass();
+          
+          //once loaded we can remove the hidden attribute
+          const toggleMenuButton = document.getElementById('menuToggleButton');
+          if (toggleMenuButton) {
+            toggleMenuButton.removeAttribute('style');
+          }
         });
 
         // Run on resize
@@ -133,7 +139,7 @@
   		<div class="title-outer-container">
 	  		<div class="title-container">
 		  		<span class="site-title">
-		  			<span><h2>Palestine Books in Libraries<h2></span>
+		  			<a href="/"><h2>Palestine Books in Libraries</h2></span></a>
 		  		</span>
 		  	</div>
 		  	<div class="menu-toggle" id="menuToggleButton" onclick="toggleMenu(this)" style="display: none;">

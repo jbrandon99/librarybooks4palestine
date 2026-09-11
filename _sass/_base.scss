@@ -94,7 +94,12 @@
   font-display: swap; 
 }
 
+
+// Breakpoints
+$desktop-breakpoint: 960px;
+
 :root {
+
 
   // Layout
   --max-width-landing-page: 960px;
@@ -105,6 +110,8 @@
   --pico-spacing: 1rem;
   --spacing-lg: 2rem;
   --pico-line-height: 1.7;
+  --pico-block-spacing-vertical: 1rem;
+  --pico-block-spacing-horizontal: 1rem;
 
   // Borders and Box Shadow
   --pico-border-radius:0.5rem;
@@ -197,29 +204,46 @@ a {
  * 5. LAYOUT & CONTAINERS
  * ========================================
  */
-
+body>header {
+  padding:0;
+}
 body {
+  padding: 0;
   display: flex;
   min-height: 100vh;
-  padding: calc(var(--pico-spacing)/4) 0;
   flex-direction: column;
 }
 
+.title-outer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    .title-container {
+      padding: var(--pico-block-spacing-vertical) 0;
+    }
+  }
+}
+
+
+body>main.container { 
+  flex:1;
+  padding-top: calc(3*var(--pico-spacing));
+}
 
 // 5.1 Container Override
-@media (min-width: 1024px) {
+@media (min-width: $desktop-breakpoint) {
   body.landing-page main.container.container {
     max-width: var(--max-width-landing-page);
   }
   body.standard-page main.container.container {
   	max-width: var(--max-width-standard-page);
   	margin: auto;
-  }
-
-  // 5.2 Main Container
-  main.container {
-    padding-top: calc(3*var(--pico-spacing));
-    flex:1;
   }
 
   .primary-and-sidebar {
@@ -268,6 +292,9 @@ body > header {
     @extend h3;
     font-weight: bold;
   }
+  a {
+    text-decoration: none;
+  }
 }
 
 .site-title-break {
@@ -286,13 +313,15 @@ main h1 {
 
 
 .menu-toggle {
+  display: block;
   width: 46px;
   height: 46px;
   justify-self: end;
   margin: calc(var(--pico-spacing)/2);
   padding: calc(var(--pico-spacing)/2);
-  background-color: var(--pico-secondary);
-  color: var(--pico-color);
+  border: var(--pico-border-width) solid var(--pico-color);
+  background-color: var(--pico-secondary-semitransparent);
+  color: var(--pico-secondary-inverse);
   border-radius: calc(var(--pico-border-radius)/2);
   // display: none;
 }
@@ -305,12 +334,16 @@ main h1 {
   display: block;
   width: 25px;
   height: 3px;
-  background-color: var(--pico-color);
+  background-color: var(--pico-secondary-inverse);
   margin: 5px auto;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  &:first-child {
+    margin-top: 2.5px; // to center align menu
+  }
 }
+
 
 
 
@@ -336,17 +369,19 @@ main h1 {
 }
 .primary-nav-container {
   position:absolute;
+  width: 100%;
 }
 
 nav.primary { 
-
     max-height: 0;
     transition: all 0.3s ease-out;
     overflow: hidden; 
+    width: 100%;
     border-top: var(--pico-border-width) solid var(--pico-primary);
-    border-bottom: var(--pico-border-width) solid var(--pico-primary);
+    border-bottom: var(--pico-border-width) solid var(--pico-secondary);
+    background-color: var(--pico-menu-background-color);
 
-    @media (min-width: 1024px) {
+    @media (min-width: $desktop-breakpoint) {
       border:none;
     }
     
@@ -360,23 +395,31 @@ nav.primary {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    margin: 0;
 
     li {
-      background-color: var(--pico-menu-background-color);
-      border-top: 1px solid var(--pico-nav-border);
+      --pico-border-radius: 0;
+      border:0;
       width: 100%;
       margin: 0;
       padding: 0;
 
-      &:first-child {
-        border:none;
+      &:nth-child(odd) {
+        border-top: 3px dotted var(--pico-primary);
       }
-      @media (min-width: 1024px) {
-        border:none;
+
+      &:nth-child(even) {
+        border-top: 3px dotted var(--pico-secondary);
+      }
+
+      &:first-child {
+        border-top:0;
       }
     }
     a {
-      background-color: var(--pico-nav-main-background);
+      --pico-border-radius: 0;
+      background-color: var(--pico-nav-desktop-background);
       color: var(--pico-color);
       display: block;
       margin: 0;
@@ -384,7 +427,9 @@ nav.primary {
       order: 3;
       width: 100%;
       text-align: center;
-      //display: none;
+      border-radius: none;
+      
+
 
       &:hover {
         text-decoration-color: var(--pico-color);
@@ -393,14 +438,14 @@ nav.primary {
   }
 }
 
-@media (min-width: 1024px) { // What is breakpoint?
+@media (min-width: $desktop-breakpoint) { // What is breakpoint?
 
   .menu-toggle {
     display: none;
   }
 
   .primary-nav-outer-container {
-    background: var(--pico-nav-main-background);
+    background: var(--pico-nav-desktop-background);
     border-top: var(--pico-border-width) solid var(--pico-nav-border);
     border-bottom: var(--pico-border-width) solid var(--pico-nav-border);
   }
@@ -432,12 +477,17 @@ nav.primary {
     }
     &.primary ul li {
       width: auto;
+      background-color:none; // to avoid theme transition oddness
+
+      &:nth-child(odd), &:nth-child(even) { 
+        border:none;
+      }
     }
     &.primary a {
       display: inline-block;
       padding: calc(var(--pico-spacing)/2) calc(2*var(--pico-spacing));
       color: var(--pico-nav-color);
-      background-color: var(--pico-nav-link-background);
+      background-color: #fff;
       text-decoration: none;
     }
   }
@@ -735,7 +785,7 @@ button, .button {
  * 14. ACTION BUTTONS
  * ========================================
  */
-@media (min-width: 1024px) {
+@media (min-width: $desktop-breakpoint) {
   #themeToggleItem {
     display: block;
     visibility: hidden;
@@ -753,9 +803,9 @@ button, .button {
     position: fixed;
     top: 10px;
     right: 10px;
-    height: 56px;
+    height: 48px;
     max-width: 156px;
-    padding: var(--pico-spacing) calc(2*var(--pico-spacing));
+    padding: calc(var(--pico-block-spacing-vertical)*0.8) calc(2*var(--pico-block-spacing-vertical));
     background: var(--pico-primary);
     font-size: var(--pico-font-size-sm);
     border: none;
