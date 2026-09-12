@@ -128,6 +128,29 @@
           menu.classList.toggle("is-active");
           menuToggle.classList.toggle("is-active");
         }
+
+
+        // Add active class to current nav url
+        document.addEventListener('DOMContentLoaded', function() {
+          // Get all navigation links
+          const navItems = document.querySelectorAll('#primaryNav li');
+          
+          // Get the current URL path (e.g., "/about")
+          const currentPath = window.location.pathname;
+         
+          // Loop through each link to check for a match
+          navItems.forEach(item => {
+            link = item.childNodes[0];
+
+            // Get the link's href (e.g., "/about")
+            const linkPath = new URL(link.href).pathname;
+         
+            // Compare currentPath with linkPath (exact match)
+            if (currentPath === linkPath) {
+              item.classList.add('active'); // Add active class
+            }
+          });
+        });
     </script>
   </head>
   <body class="standard-page">
@@ -164,7 +187,7 @@
 					  
 					    <li><a href="/contact">Contact</a></li>
 					  
-					  	<li><a href="#" id="themeToggleItem" onclick="toggleTheme()">Switch Theme</li></a>
+					  	<li id="themeToggleListItem"><a href="#" id="themeToggleItem" onclick="toggleTheme()">Switch Theme</li></a>
 					</ul>
 				</nav>
 			</div>
