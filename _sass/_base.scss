@@ -94,7 +94,12 @@
   font-display: swap; 
 }
 
+
+// Breakpoints
+$desktop-breakpoint: 960px;
+
 :root {
+
 
   // Layout
   --max-width-landing-page: 960px;
@@ -105,6 +110,8 @@
   --pico-spacing: 1rem;
   --spacing-lg: 2rem;
   --pico-line-height: 1.7;
+  --pico-block-spacing-vertical: 1rem;
+  --pico-block-spacing-horizontal: 1rem;
 
   // Borders and Box Shadow
   --pico-border-radius:0.5rem;
@@ -197,29 +204,46 @@ a {
  * 5. LAYOUT & CONTAINERS
  * ========================================
  */
-
+body>header {
+  padding:0;
+}
 body {
+  padding: 0;
   display: flex;
   min-height: 100vh;
-  padding: calc(var(--pico-spacing)/4) 0;
   flex-direction: column;
 }
 
+.title-outer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    .title-container {
+      padding: var(--pico-block-spacing-vertical) 0;
+    }
+  }
+}
+
+
+body>main.container { 
+  flex:1;
+  padding-top: calc(3*var(--pico-spacing));
+}
 
 // 5.1 Container Override
-@media (min-width: 1024px) {
+@media (min-width: $desktop-breakpoint) {
   body.landing-page main.container.container {
     max-width: var(--max-width-landing-page);
   }
   body.standard-page main.container.container {
   	max-width: var(--max-width-standard-page);
   	margin: auto;
-  }
-
-  // 5.2 Main Container
-  main.container {
-    padding-top: calc(3*var(--pico-spacing));
-    flex:1;
   }
 
   .primary-and-sidebar {
@@ -236,6 +260,15 @@ body {
   		padding: var(--pico-spacing);
   		padding-left: calc(var(--pico-spacing)*2);
   	}
+  }
+}
+@media (min-width: $desktop-breakpoint) {
+  .title-outer-container {
+    justify-content: center;
+    .title-container {
+      margin-left: 0;
+      padding-bottom: var(--pico-block-spacing-vertical);
+    }
   }
 }
 
@@ -268,6 +301,9 @@ body > header {
     @extend h3;
     font-weight: bold;
   }
+  a {
+    text-decoration: none;
+  }
 }
 
 .site-title-break {
@@ -275,170 +311,180 @@ body > header {
 }
 
 main h1 {
-	text-align: center;
+	text-align: left;
 }
 
-/***
- * ========================================
- * 7. NAVIGATION
- * ========================================
- */
-
-
-.menu-toggle {
-  width: 46px;
-  height: 46px;
-  justify-self: end;
-  margin: calc(var(--pico-spacing)/2);
-  padding: calc(var(--pico-spacing)/2);
-  background-color: var(--pico-secondary);
-  color: var(--pico-color);
-  border-radius: calc(var(--pico-border-radius)/2);
-  // display: none;
+// desktop
+@media (min-width: $desktop-breakpoint) {
+  .site-title {
+    padding-left: 50%;
+  }
 }
+// ========================================
+// NAVIGATION
+// ========================================
 
-.menu-toggle:hover{
-  cursor: pointer;
-}
-
-.menu-toggle .bar{
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: var(--pico-color);
-  margin: 5px auto;
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-
-
-#menuToggleButton.is-active .bar:nth-child(2){
-  opacity: 0;
-}
-
-#menuToggleButton.is-active .bar:nth-child(1){
-  -webkit-transform: translateY(8px) rotate(45deg);
-  -ms-transform: translateY(8px) rotate(45deg);
-  -o-transform: translateY(8px) rotate(45deg);
-  transform: translateY(8px) rotate(45deg);
-}
-
-#menuToggleButton.is-active .bar:nth-child(3){
-  -webkit-transform: translateY(-8px) rotate(-45deg);
-  -ms-transform: translateY(-8px) rotate(-45deg);
-  -o-transform: translateY(-8px) rotate(-45deg);
-  transform: translateY(-8px) rotate(-45deg);
-}
 .primary-nav-outer-container {
   position: relative;
 }
+
 .primary-nav-container {
-  position:absolute;
+  position: absolute;
+  width: 100%;
 }
 
-nav.primary { 
+// ----------------------------------------
+// Mobile nav (default)
+// ----------------------------------------
 
-    max-height: 0;
-    transition: all 0.3s ease-out;
-    overflow: hidden; 
-    border-top: var(--pico-border-width) solid var(--pico-primary);
-    border-bottom: var(--pico-border-width) solid var(--pico-primary);
+nav.primary {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
 
-    @media (min-width: 1024px) {
-      border:none;
-    }
-    
-    &.is-active {
-      display: block;
-      max-height: 800px;
-    }
+  background-color: var(--nav-mobile-bg);
+  border-top:     var(--pico-border-width) solid var(--nav-mobile-border-top);
+  border-bottom:  var(--pico-border-width) solid var(--nav-mobile-border-bottom);
 
-    ul {
+  &.is-active {
+    max-height: 800px;
+  }
+
+  ul {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    list-style: none;
 
     li {
-      background-color: var(--pico-menu-background-color);
-      border-top: 1px solid var(--pico-nav-border);
+      --pico-border-radius: 0;
       width: 100%;
       margin: 0;
       padding: 0;
+      border: 0;
+      &:nth-child(odd)  { border-top: 3px dotted var(--nav-mobile-divider-odd); }
+      &:nth-child(even) { border-top: 3px dotted var(--nav-mobile-divider-even); }
+      &:first-child     { border-top: 0; }
 
-      &:first-child {
-        border:none;
-      }
-      @media (min-width: 1024px) {
-        border:none;
-      }
     }
+
     a {
-      background-color: var(--pico-nav-main-background);
-      color: var(--pico-color);
+      --pico-border-radius: 0;
       display: block;
-      margin: 0;
-      padding: var(--pico-spacing) calc(var(--pico-spacing)/2);
-      order: 3;
       width: 100%;
+      margin: 0;
+      padding: var(--pico-spacing) calc(var(--pico-spacing) / 2);
       text-align: center;
-      //display: none;
+      text-decoration: none;
+      color: var(--nav-mobile-link-color);
+      background-color: var(--nav-mobile-link-bg);
+      text-decoration-color: var(--nav-mobile-link-underline);
 
       &:hover {
-        text-decoration-color: var(--pico-color);
+        text-decoration-color: var(--nav-mobile-link-underline);
       }
     }
+    li.active:not(#themeToggleListItem) { background: var(--nav-mobile-bg-color-active); }
   }
 }
 
-@media (min-width: 1024px) { // What is breakpoint?
+// ----------------------------------------
+// Desktop nav
+// ----------------------------------------
 
-  .menu-toggle {
-    display: none;
-  }
+@media (min-width: $desktop-breakpoint) {
 
-  .primary-nav-outer-container {
-    background: var(--pico-nav-main-background);
-    border-top: var(--pico-border-width) solid var(--pico-nav-border);
-    border-bottom: var(--pico-border-width) solid var(--pico-nav-border);
-  }
+  .menu-toggle { display: none; }
+
   .primary-nav-outer-container {
     position: static;
+    background: var(--nav-desktop-bg);
+    //border-top:    var(--pico-border-width) solid var(--nav-desktop-border);
+    //border-bottom: var(--pico-border-width) solid var(--nav-desktop-border);
   }
-  .primary-nav-container {
-    position:static;
-  }
 
+  .primary-nav-container { position: static; }
 
+  nav.primary {
+    max-height: none;
+    overflow: visible;
+    margin: calc(var(--pico-block-spacing-vertical)/2) 0;
+    padding: calc(var(--pico-block-spacing-vertical)/2) 0;
+    border: none;
+    background-color: transparent;
 
-  nav {
-
-    &.primary {
-      width: 100%;
-      max-height: none;
-    }
-
-    &.primary ul {
+    ul {
       display: flex;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
-      gap: var(--pico-spacing);
-      list-style: none;
       width: 100%;
       margin: 0;
-      padding: 0;
-    }
-    &.primary ul li {
-      width: auto;
-    }
-    &.primary a {
-      display: inline-block;
-      padding: calc(var(--pico-spacing)/2) calc(2*var(--pico-spacing));
-      color: var(--pico-nav-color);
-      background-color: var(--pico-nav-link-background);
-      text-decoration: none;
+      padding: 0 0 0 var(--pico-block-spacing-horizontal); // padding left necessary, as there is a gap between the last menu item and the theme toggle button
+      list-style: none;
+      gap: var(--pico-block-spacing-horizontal);
+
+
+      li {      
+        --pico-border-radius: 2rem;
+        width: 240px;
+        background: none;
+        border: none;
+        border-radius: var(--pico-border-radius); 
+        
+        &.active {
+          background: var(--nav-desktop-bg-color-active);
+        }
+        &:nth-child(odd) {
+           border: 3px dotted var(--nav-desktop-border-color-odd);
+           &:hover {
+             background: blue;
+           }
+        }
+        &:nth-child(even) { 
+           border: 3px dotted var(--nav-desktop-border-color-even);
+           &:hover {
+             background: var(--nav-desktop-bg-color-even);
+           }
+        }
+        &:hover {          
+          a {
+            text-decoration-line: underline;
+            text-decoration-color: var(--nav-desktop-link-underline);
+          }
+          &:nth-child(odd) { 
+              background: var(--nav-desktop-bg-color-odd);
+          }
+          &:nth-child(even) { 
+              background: var(--nav-desktop-bg-color-even);
+          }
+        }
+        
+        &:first-child {
+          border-left: 3px dotted var(--nav-desktop-border-color-odd);
+        }
+        &#themeToggleListItem {
+          width: 0;
+          height: 0;
+          border: none;
+        }
+      }
+
+      a {
+        display: inline-block;
+        padding: calc(var(--pico-spacing)) calc(4 * var(--pico-spacing));
+        color: var(--nav-desktop-link-color);
+        background: none;
+        text-decoration-line: none;
+        text-decoration-color: var(--nav-desktop-link-underline);
+        transition: none;
+
+      }
+
     }
   }
 }
@@ -735,7 +781,7 @@ button, .button {
  * 14. ACTION BUTTONS
  * ========================================
  */
-@media (min-width: 1024px) {
+@media (min-width: $desktop-breakpoint) {
   #themeToggleItem {
     display: block;
     visibility: hidden;
@@ -753,9 +799,9 @@ button, .button {
     position: fixed;
     top: 10px;
     right: 10px;
-    height: 56px;
+    height: 48px;
     max-width: 156px;
-    padding: var(--pico-spacing) calc(2*var(--pico-spacing));
+    padding: calc(var(--pico-block-spacing-vertical)*0.8) calc(2*var(--pico-block-spacing-vertical));
     background: var(--pico-primary);
     font-size: var(--pico-font-size-sm);
     border: none;
@@ -763,3 +809,67 @@ button, .button {
     cursor: pointer;
     z-index: 1000;
   }
+
+// ========================================
+// MENU TOGGLE BUTTON
+// ========================================
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  width: 46px;
+  height: 46px;
+  margin: calc(var(--pico-spacing) / 2);
+  padding: calc(var(--pico-spacing) / 2);
+
+  border: var(--pico-border-width) solid var(--menu-toggle-border);
+  border-radius: calc(var(--pico-border-radius) / 2);
+  background-color: var(--menu-toggle-bg);
+  color: var(--menu-toggle-icon);
+
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--menu-toggle-bg-hover);
+    border-color: var(--menu-toggle-border-hover);
+    outline: none;
+  }
+
+  // --- Bars ---
+  .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--menu-toggle-icon);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transform-origin: center;
+  }
+}
+
+// --- Active (X) state ---
+#menuToggleButton.is-active {
+  .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+// --- Hide on desktop ---
+@media (min-width: $desktop-breakpoint) {
+  .menu-toggle {
+    display: none;
+  }
+}
