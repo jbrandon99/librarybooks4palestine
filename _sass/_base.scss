@@ -369,9 +369,6 @@ nav.primary {
       &:nth-child(odd)  { border-top: 3px dotted var(--nav-mobile-divider-odd); }
       &:nth-child(even) { border-top: 3px dotted var(--nav-mobile-divider-even); }
       &:first-child     { border-top: 0; }
-      &#themeToggleListItem {
-        border: none;
-      }
 
     }
 
@@ -391,7 +388,7 @@ nav.primary {
         text-decoration-color: var(--nav-mobile-link-underline);
       }
     }
-    li.active a:not(#themeToggleItem) { background: var(--nav-mobile-bg-color-active); }
+    li.active:not(#themeToggleListItem) { background: var(--nav-mobile-bg-color-active); }
   }
 }
 
@@ -473,6 +470,7 @@ nav.primary {
         &#themeToggleListItem {
           width: 0;
           height: 0;
+          border: none;
         }
       }
 
